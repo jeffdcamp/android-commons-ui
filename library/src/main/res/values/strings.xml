@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources xmlns:its="http://www.w3.org/2005/11/its" its:version="1.0">
+    <string name="back">Back</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="more_options">More options</string>
+    <string name="show_password">Show Password</string>
+</resources>
