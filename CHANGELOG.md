@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.0.4 *(2022-09)*
+-------------------------
+* Android Compose version updates 1.3.1 / Ui 1.3.0-beta02 / Material3 1.0.0-beta02
+
 Version 1.0.3 *(2022-08)*
 -------------------------
 * UI fixes to DayNightPasswordTextField.kt
