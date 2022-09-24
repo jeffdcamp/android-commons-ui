@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.1.1 *(2022-09)*
+-------------------------
+* Added MultiSelectDialog, DateDialogUiState, TimeDialogUiState to DialogUiState.LibraryDialogs()
+* Fixes for EnumExposedDropdownMenuBox with Material3 1.0.0-beta03
+* Updated MultiSelectDataItem (MultiSelectDialog) to use @Composable lambdas for text
+
 Version 1.1.0 *(2022-09)*
 -------------------------
 * Updated dialogs to use @Composable lambdas for text (better support device language switching)
