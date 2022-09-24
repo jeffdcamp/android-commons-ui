@@ -139,7 +139,7 @@ private fun <T> MultiSelectDialogItem(
         contentAlignment = Alignment.CenterStart
     ) {
         Text(
-            text = multiSelectDataItem.text,
+            text = multiSelectDataItem.text(),
             style = MaterialTheme.typography.bodyMedium.merge(),
             modifier = Modifier.padding(start = 16.dp)
         )
@@ -180,16 +180,16 @@ data class MultiSelectDialogUiState<T>(
     override val onDismissRequest: () -> Unit = {},
 ) : DialogUiState<List<T>>
 
-data class MultiSelectDataItem<T>(val item: T, val text: String)
+data class MultiSelectDataItem<T>(val item: T, val text: @Composable () -> String)
 
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
 private fun PreviewMultiSelectDialog() {
     val items = listOf(
-        MultiSelectDataItem("id1", "A"),
-        MultiSelectDataItem("id2", "B"),
-        MultiSelectDataItem( "id3", "C"),
+        MultiSelectDataItem("id1") { "A" },
+        MultiSelectDataItem("id2") { "B" },
+        MultiSelectDataItem( "id3") { "C" },
     )
 
     val selectedItems = listOf("id2", "id3")
