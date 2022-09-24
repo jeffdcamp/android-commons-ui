@@ -1,8 +1,10 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
+import android.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,29 +35,31 @@ fun LibraryDialogs(dialogUiState: DialogUiState<*>) {
         is TwoInputDialogUiState -> TwoInputDialog(dialogUiState)
         is RadioDialogUiState -> RadioDialog(dialogUiState)
         is MenuOptionsDialogUiState -> MenuOptionsDialog(dialogUiState)
-        is MultiSelectDialogUiState<*> -> MultiSelectDialog(dialogUiState)
-        is DateDialogUiState -> MaterialDatePickerDialog(dialogUiState)
-        is TimeDialogUiState -> MaterialTimePickerDialog(dialogUiState)
     }
 }
 
 fun ViewModel.showMessageDialog(
     dialogUiStateFlow: MutableStateFlow<DialogUiState<*>?>,
-    title: String? = null,
-    text: String? = null,
-    confirmButtonText: String? = null,
-    dismissButtonText: String? = null,
-    onConfirm: () -> Unit = {},
-    onDismiss: (() -> Unit)? = null
+    title: @Composable () -> String? = { null },
+    text: @Composable () -> String? = { null },
+    confirmButtonText: @Composable () -> String? = { stringResource(R.string.ok) },
+    dismissButtonText: @Composable () -> String? = { stringResource(R.string.cancel) },
+    onConfirm: (() -> Unit)? = {},
+    onDismiss: (() -> Unit)? = null,
+    onDismissRequest: (() -> Unit)? = { dismissDialog(dialogUiStateFlow) }
 ) {
     dialogUiStateFlow.value = MessageDialogUiState(
         title = title,
         text = text,
         confirmButtonText = confirmButtonText,
         dismissButtonText = dismissButtonText,
-        onConfirm = {
-            onConfirm()
-            dismissDialog(dialogUiStateFlow)
+        onConfirm = if (onConfirm != null) {
+            {
+                onConfirm()
+                dismissDialog(dialogUiStateFlow)
+            }
+        } else {
+            null
         },
         onDismiss = if (onDismiss != null) {
             {
@@ -66,7 +70,7 @@ fun ViewModel.showMessageDialog(
             null
         },
         onDismissRequest = {
-            dismissDialog(dialogUiStateFlow)
+            onDismissRequest?.invoke()
         }
     )
 }

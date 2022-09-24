@@ -22,7 +22,7 @@ import androidx.compose.ui.window.DialogProperties
 
 @Composable
 fun MenuOptionsDialog(
-    onDismissRequest: (() -> Unit) = {},
+    onDismissRequest: (() -> Unit),
     title: String? = null,
     options: List<MenuOptionsDialogItem>,
     properties: DialogProperties = DialogProperties(),
@@ -54,7 +54,7 @@ fun MenuOptionsDialog(
                 // Options
                 options.forEach { menuOptionsDialogItem: MenuOptionsDialogItem ->
                     ListItem(
-                        headlineText = { Text(menuOptionsDialogItem.text) },
+                        headlineText = { Text(menuOptionsDialogItem.text()) },
                         modifier = Modifier
                             .clickable { menuOptionsDialogItem.onClick() }
                     )
@@ -64,21 +64,21 @@ fun MenuOptionsDialog(
     }
 }
 
-data class MenuOptionsDialogItem(val text: String, val onClick: () -> Unit)
+data class MenuOptionsDialogItem(val text: @Composable () -> String, val onClick: () -> Unit)
 
 @Composable
 fun MenuOptionsDialog(
     dialogUiState: MenuOptionsDialogUiState
-){
+) {
     MenuOptionsDialog(
-        title = dialogUiState.title,
-        options = dialogUiState.options,
-        onDismissRequest = dialogUiState.onDismissRequest
+        onDismissRequest = dialogUiState.onDismissRequest,
+        title = dialogUiState.title(),
+        options = dialogUiState.options
     )
 }
 
 data class MenuOptionsDialogUiState(
-    val title: String? = null,
+    val title: @Composable () -> String? = { null },
     val options: List<MenuOptionsDialogItem>,
     override val onConfirm: ((String) -> Unit)? = null, // not used in OptionsDialog
     override val onDismiss: (() -> Unit)? = null,  // not used in OptionsDialog
@@ -89,12 +89,15 @@ data class MenuOptionsDialogUiState(
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
 fun PreviewMenuOptionsDialog() {
-    MenuOptionsDialog(
-        title = "Options",
-        options = listOf(
-            MenuOptionsDialogItem("Option 1") {},
-            MenuOptionsDialogItem("Option 2") {},
-            MenuOptionsDialogItem("Option 3") {},
+    MaterialTheme {
+        MenuOptionsDialog(
+            onDismissRequest = {},
+            title = "Options",
+            options = listOf(
+                MenuOptionsDialogItem({ "Option 1" }) {},
+                MenuOptionsDialogItem({ "Option 2" }) {},
+                MenuOptionsDialogItem({ "Option 3" }) {},
+            )
         )
-    )
+    }
 }

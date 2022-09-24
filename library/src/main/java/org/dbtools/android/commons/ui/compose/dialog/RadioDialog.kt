@@ -31,12 +31,12 @@ import androidx.compose.ui.window.DialogProperties
 fun <T> RadioDialog(
     items: RadioDialogDataItems<T>?,
     onItemSelected: (T) -> Unit,
+    onDismissRequest: (() -> Unit),
     title: String? = null,
     onConfirmButtonClicked: (() -> Unit)? = null,
-    onDismissRequest: (() -> Unit) = {},
     onDismissButtonClicked: (() -> Unit)? = null,
-    confirmButtonText: String = stringResource(android.R.string.ok),
-    dismissButtonText: String = stringResource(android.R.string.cancel),
+    confirmButtonText: String? = stringResource(android.R.string.ok),
+    dismissButtonText: String? = stringResource(android.R.string.cancel),
     shape: Shape = DialogDefaults.DefaultCorner,
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
     properties: DialogProperties = DialogProperties()
@@ -74,7 +74,7 @@ fun <T> RadioDialog(
                         .fillMaxWidth()
                         .padding(top = 24.dp)
                 ) {
-                    if (onDismissButtonClicked != null) {
+                    if (onDismissButtonClicked != null && dismissButtonText != null) {
                         TextButton(
                             onClick = {
                                 onDismissButtonClicked()
@@ -83,7 +83,7 @@ fun <T> RadioDialog(
                             Text(dismissButtonText)
                         }
                     }
-                    if (onConfirmButtonClicked != null) {
+                    if (onConfirmButtonClicked != null && confirmButtonText != null) {
                         TextButton(
                             onClick = {
                                 onConfirmButtonClicked()
@@ -118,7 +118,7 @@ private fun <T> RadioDialogItems(radioDialogDataItems: RadioDialogDataItems<T>, 
                     onClick = null // null recommended for accessibility with screen readers
                 )
                 Text(
-                    text = radioDialogDataItem.text,
+                    text = radioDialogDataItem.text(),
                     style = MaterialTheme.typography.bodyMedium.merge(),
                     modifier = Modifier.padding(start = 16.dp)
                 )
@@ -130,24 +130,24 @@ private fun <T> RadioDialogItems(radioDialogDataItems: RadioDialogDataItems<T>, 
 @Composable
 fun <T> RadioDialog(
     dialogUiState: RadioDialogUiState<T>
-){
+) {
     RadioDialog(
         items = dialogUiState.items,
-        onItemSelected = { dialogUiState.onConfirm(it) },
-        title = dialogUiState.title,
+        onItemSelected = dialogUiState.onConfirm,
+        title = dialogUiState.title(),
         onConfirmButtonClicked = null,
-        onDismissRequest = { dialogUiState.onDismissRequest() },
-        onDismissButtonClicked = if (dialogUiState.onDismiss != null ) { { dialogUiState.onDismiss.invoke() } } else null,
-        confirmButtonText = dialogUiState.confirmButtonText ?: stringResource(android.R.string.ok),
-        dismissButtonText = dialogUiState.dismissButtonText ?: stringResource(android.R.string.cancel),
+        onDismissRequest = dialogUiState.onDismissRequest,
+        onDismissButtonClicked = dialogUiState.onDismiss,
+        confirmButtonText = dialogUiState.confirmButtonText(),
+        dismissButtonText = dialogUiState.dismissButtonText(),
     )
 }
 
 data class RadioDialogUiState<T>(
     val items: RadioDialogDataItems<T>?,
-    val title: String? = null,
-    val confirmButtonText: String? = null,
-    val dismissButtonText: String? = null,
+    val title: @Composable () -> String? = { null },
+    val confirmButtonText: @Composable () -> String? = { stringResource(android.R.string.ok) },
+    val dismissButtonText: @Composable () -> String? = { stringResource(android.R.string.cancel) },
     override val onConfirm: (T) -> Unit = {},
     override val onDismiss: (() -> Unit)? = null,
     override val onDismissRequest: () -> Unit = {},
@@ -155,27 +155,28 @@ data class RadioDialogUiState<T>(
 
 data class RadioDialogDataItems<T>(val items: List<RadioDialogDataItem<T>>, val selectedItem: T)
 
-data class RadioDialogDataItem<T>(val item: T, val text: String)
+data class RadioDialogDataItem<T>(val item: T, val text: @Composable () -> String)
 
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun PreviewRadioDialog() {
+private fun TestRadioDialog() {
     val radioItems: RadioDialogDataItems<String> = RadioDialogDataItems(
         listOf(
-            RadioDialogDataItem("id1", "A"),
-            RadioDialogDataItem("id2", "B"),
-            RadioDialogDataItem("id3", "C"),
+            RadioDialogDataItem("id1") { "A" },
+            RadioDialogDataItem("id2") { "B" },
+            RadioDialogDataItem("id3") { "C" },
         ),
         "id2"
     )
 
     MaterialTheme {
         RadioDialog(
+            onDismissRequest = {},
             title = "Title",
             items = radioItems,
-            onItemSelected = {  },
-            onDismissButtonClicked = {  }
+            onItemSelected = { },
+            onDismissButtonClicked = { }
         )
     }
 }
