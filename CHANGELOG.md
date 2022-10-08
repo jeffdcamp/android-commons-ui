@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.2.0 *(2022-10)*
+-------------------------
+* Kotlin 1.7.20
+* Fixes for DayNightPasswordTextField with Material3 1.0.0-rc01
+* Code cleanup
+
 Version 1.1.1 *(2022-09)*
 -------------------------
 * Added MultiSelectDialog, DateDialogUiState, TimeDialogUiState to DialogUiState.LibraryDialogs()
