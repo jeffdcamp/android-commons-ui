@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
@@ -231,7 +229,7 @@ private fun SettingsPreview() {
                 Setting.Header("Display")
                 Setting.Clickable("Theme", currentThemeTitleFlow) { }
                 Setting.Switch("Sort by last name", sortByLastNameFlow) { }
-                Setting.Slider("Playback Speed", playbackSpeedFlow, range = .5f..3f) { value ->  }
+                Setting.Slider("Playback Speed", playbackSpeedFlow, range = .5f..3f) { }
 
                 // not translated because this should not be visible for release builds
                 Setting.Header("Developer Options")

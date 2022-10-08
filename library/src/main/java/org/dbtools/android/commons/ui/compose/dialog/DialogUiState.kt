@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
-import android.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -44,8 +43,8 @@ fun ViewModel.showMessageDialog(
     dialogUiStateFlow: MutableStateFlow<DialogUiState<*>?>,
     title: @Composable () -> String? = { null },
     text: @Composable () -> String? = { null },
-    confirmButtonText: @Composable () -> String? = { stringResource(R.string.ok) },
-    dismissButtonText: @Composable () -> String? = { stringResource(R.string.cancel) },
+    confirmButtonText: @Composable () -> String? = { stringResource(android.R.string.ok) },
+    dismissButtonText: @Composable () -> String? = { stringResource(android.R.string.cancel) },
     onConfirm: (() -> Unit)? = {},
     onDismiss: (() -> Unit)? = null,
     onDismissRequest: (() -> Unit)? = { dismissDialog(dialogUiStateFlow) }

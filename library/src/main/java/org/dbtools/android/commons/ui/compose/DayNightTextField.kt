@@ -3,8 +3,6 @@ package org.dbtools.android.commons.ui.compose
 import android.content.res.Configuration
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.LocalTextStyle
@@ -21,14 +19,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun DayNightTextField(
@@ -42,15 +39,15 @@ fun DayNightTextField(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
+    supportingText: @Composable (() -> Unit)? = null,
     isError: Boolean = false,
-    errorHelperText: String? = null,
-    helperText: String? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions(),
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = TextFieldDefaults.filledShape,
     colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
 ) {
     var textFieldValueState by remember { mutableStateOf(TextFieldValue(text = value)) }
@@ -73,14 +70,14 @@ fun DayNightTextField(
         placeholder = placeholder,
         leadingIcon = leadingIcon,
         trailingIcon = trailingIcon,
+        supportingText = supportingText,
         isError = isError,
-        errorHelperText = errorHelperText,
-        helperText = helperText,
         visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
         maxLines = maxLines,
         interactionSource = interactionSource,
+        shape = shape,
         colors = colors
     )
 }
@@ -97,72 +94,74 @@ fun DayNightTextField(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
+    supportingText: @Composable (() -> Unit)? = null,
     isError: Boolean = false,
-    errorHelperText: String? = null,
-    helperText: String? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions(),
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = TextFieldDefaults.filledShape,
     colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
 ) {
-    Column {
-        if (isSystemInDarkTheme()) {
-            TextField(
-                value = value,
-                onValueChange = { onValueChange(it) },
-                modifier = modifier,
-                enabled = enabled,
-                readOnly = readOnly,
-                textStyle = textStyle,
-                label = label,
-                placeholder = placeholder,
-                leadingIcon = leadingIcon,
-                trailingIcon = trailingIcon,
-                isError = isError,
-                singleLine = singleLine,
-                visualTransformation = visualTransformation,
-                keyboardOptions = keyboardOptions,
-                keyboardActions = keyboardActions,
-                maxLines = maxLines,
-                interactionSource = interactionSource,
-                colors = colors
-            )
-        } else {
-            OutlinedTextField(
-                value = value,
-                onValueChange = { onValueChange(it) },
-                modifier = modifier,
-                enabled = enabled,
-                readOnly = readOnly,
-                textStyle = textStyle,
-                label = label,
-                placeholder = placeholder,
-                leadingIcon = leadingIcon,
-                trailingIcon = trailingIcon,
-                isError = isError,
-                singleLine = singleLine,
-                visualTransformation = visualTransformation,
-                keyboardOptions = keyboardOptions,
-                keyboardActions = keyboardActions,
-                maxLines = maxLines,
-                interactionSource = interactionSource,
-                colors = colors
-            )
-        }
+    if (isSystemInDarkTheme()) {
+        TextField(
+            value = value,
+            onValueChange = { onValueChange(it) },
+            modifier = modifier,
+            enabled = enabled,
+            readOnly = readOnly,
+            textStyle = textStyle,
+            label = label,
+            placeholder = placeholder,
+            leadingIcon = leadingIcon,
+            trailingIcon = trailingIcon,
+            supportingText = supportingText,
+            isError = isError,
+            singleLine = singleLine,
+            visualTransformation = visualTransformation,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            maxLines = maxLines,
+            interactionSource = interactionSource,
+            shape = shape,
+            colors = colors
+        )
+    } else {
+        OutlinedTextField(
+            value = value,
+            onValueChange = { onValueChange(it) },
+            modifier = modifier,
+            enabled = enabled,
+            readOnly = readOnly,
+            textStyle = textStyle,
+            label = label,
+            placeholder = placeholder,
+            leadingIcon = leadingIcon,
+            trailingIcon = trailingIcon,
+            supportingText = supportingText,
+            isError = isError,
+            singleLine = singleLine,
+            visualTransformation = visualTransformation,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            maxLines = maxLines,
+            interactionSource = interactionSource,
+            shape = shape,
+            colors = colors
+        )
+    }
+}
 
-        // adding a "" could be used to reserve space in a dialog
-        if (helperText != null || (isError && errorHelperText != null)) {
-            Text(
-                text = (if (isError) errorHelperText else helperText) ?: "",
-                modifier = Modifier
-                    .padding(horizontal = 16.dp),
-                color = if (isError) MaterialTheme.colorScheme.error else Color.Unspecified,
-                style = MaterialTheme.typography.bodySmall,
-            )
-        }
+@Composable
+fun SupportingText(
+    isError: Boolean = false,
+    helperText: String? = null,
+    errorHelperText: String? = null,
+) {
+    if (helperText != null || (isError && errorHelperText != null)) {
+        Text(text = (if (isError) errorHelperText else helperText).orEmpty())
     }
 }
 

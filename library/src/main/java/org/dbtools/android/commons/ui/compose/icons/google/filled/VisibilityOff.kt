@@ -1,4 +1,4 @@
-package org.dbtools.android.commons.ui.compose.google.filled
+package org.dbtools.android.commons.ui.compose.icons.google.filled
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.materialIcon

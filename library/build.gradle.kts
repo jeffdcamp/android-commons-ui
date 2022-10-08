@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
     signing
     kotlin("android")
-    id("de.undercouch.download")
+    id("de.undercouch.download") version "5.2.1"
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.detekt)
 }
@@ -26,8 +26,8 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-module-name", Pom.LIBRARY_ARTIFACT_ID)
-        freeCompilerArgs += listOf(
+        freeCompilerArgs = listOf(
+            "-module-name", Pom.LIBRARY_ARTIFACT_ID,
             "-Xopt-in=kotlin.RequiresOptIn",
             "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api",
             "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi",
@@ -112,7 +112,7 @@ tasks.withType<Test> {
 tasks.register<de.undercouch.gradle.tasks.download.Download>("downloadDetektConfig") {
     download {
         onlyIf { !file("build/config/detektConfig.yml").exists() }
-        src("https://raw.githubusercontent.com/ICSEng/AndroidPublic/main/detekt/detektConfig-20220420.yml")
+        src("https://raw.githubusercontent.com/ICSEng/AndroidPublic/main/detekt/detektConfig-20221001.yml")
         dest("build/config/detektConfig.yml")
     }
 }
@@ -133,6 +133,9 @@ detekt {
 }
 
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    // ignore ImageVector files
+    exclude("**/ui/compose/icons/**")
+
     reports {
         html.required.set(true) // observe findings in your browser with structure and code snippets
         xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins

@@ -4,7 +4,6 @@ import android.content.res.Configuration
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -23,7 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -34,9 +33,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import org.dbtools.android.commons.ui.R
-import org.dbtools.android.commons.ui.compose.google.filled.Visibility
-import org.dbtools.android.commons.ui.compose.google.filled.VisibilityOff
-import org.dbtools.android.commons.ui.compose.util.formKeyEventHandler
+import org.dbtools.android.commons.ui.compose.icons.google.filled.Visibility
+import org.dbtools.android.commons.ui.compose.icons.google.filled.VisibilityOff
 
 @Composable
 fun DayNightPasswordTextField(
@@ -49,13 +47,13 @@ fun DayNightPasswordTextField(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
+    supportingText: @Composable (() -> Unit)? = null,
     isError: Boolean = false,
-    errorHelperText: String? = null,
-    helperText: String? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions(),
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = TextFieldDefaults.filledShape,
     colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
 ) {
     var textFieldValueState by remember { mutableStateOf(TextFieldValue(text = value)) }
@@ -76,13 +74,13 @@ fun DayNightPasswordTextField(
         label = label,
         placeholder = placeholder,
         leadingIcon = leadingIcon,
+        supportingText = supportingText,
         isError = isError,
-        errorHelperText = errorHelperText,
-        helperText = helperText,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
         maxLines = maxLines,
         interactionSource = interactionSource,
+        shape = shape,
         colors = colors
     )
 }
@@ -98,13 +96,13 @@ fun DayNightPasswordTextField(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
+    supportingText: @Composable (() -> Unit)? = null,
     isError: Boolean = false,
-    errorHelperText: String? = null,
-    helperText: String? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions(),
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = TextFieldDefaults.filledShape,
     colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
@@ -127,15 +125,15 @@ fun DayNightPasswordTextField(
                 )
             }
         },
+        supportingText = supportingText,
         isError = isError,
-        errorHelperText = errorHelperText,
-        helperText = helperText,
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = keyboardOptions.copy(keyboardType = KeyboardType.Password),
         keyboardActions = keyboardActions,
         singleLine = true,
         maxLines = maxLines,
         interactionSource = interactionSource,
+        shape = shape,
         colors = colors
     )
 }
@@ -161,4 +159,3 @@ fun PreviewDayNightPasswordTextField() {
         }
     }
 }
-
