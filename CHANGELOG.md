@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.2.1 *(2022-10)*
+-------------------------
+* Updated to stable versions of Compose
+* Moved ScaffoldAndNavigation -> AppScaffoldAndNavigation (support per-app ToolBar implementation)
+
 Version 1.2.0 *(2022-10)*
 -------------------------
 * Kotlin 1.7.20
