@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.2.2 *(2022-11)*
+-------------------------
+* Added floatingActionButton and floatingActionButtonPosition to AppScaffold and AppScaffoldAndNavigation
+* Apply alpha to confirm button on InputDialog when disabled
+
 Version 1.2.1 *(2022-10)*
 -------------------------
 * Updated to stable versions of Compose
