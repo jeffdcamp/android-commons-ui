@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationRail
@@ -28,12 +29,16 @@ fun AppScaffoldAndNavigation(
     modifier: Modifier = Modifier,
     hideNavigation: Boolean = false,
     navBarData: AppNavBarData? = null,
+    floatingActionButton: @Composable () -> Unit = {},
+    floatingActionButtonPosition: FabPosition = FabPosition.End,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     when {
         hideNavigation -> {
             Scaffold(
                 topBar = topAppBar,
+                floatingActionButton = floatingActionButton,
+                floatingActionButtonPosition = floatingActionButtonPosition,
                 modifier = modifier
             ) { innerPadding ->
                 AppScaffoldContentWrapper(innerPadding, content = content)
@@ -45,6 +50,8 @@ fun AppScaffoldAndNavigation(
                 Scaffold(
                     topBar = topAppBar,
                     bottomBar = navBarData.bottomBar(),
+                    floatingActionButton = floatingActionButton,
+                    floatingActionButtonPosition = floatingActionButtonPosition,
                     modifier = modifier
                 ) { innerPadding ->
                     AppScaffoldContentWrapper(innerPadding, navBarData, content)
@@ -56,6 +63,8 @@ fun AppScaffoldAndNavigation(
             Scaffold(
                 topBar = topAppBar,
                 bottomBar = navBarData?.bottomBar() ?: {},
+                floatingActionButton = floatingActionButton,
+                floatingActionButtonPosition = floatingActionButtonPosition,
                 modifier = modifier
             ) { innerPadding ->
                 AppScaffoldContentWrapper(innerPadding, navBarData, content)
