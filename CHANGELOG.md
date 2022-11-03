@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.2.3 *(2022-11)*
+-------------------------
+* Fixed Setting.Switch to have the whole row clickable
+
 Version 1.2.2 *(2022-11)*
 -------------------------
 * Added floatingActionButton and floatingActionButtonPosition to AppScaffold and AppScaffoldAndNavigation
