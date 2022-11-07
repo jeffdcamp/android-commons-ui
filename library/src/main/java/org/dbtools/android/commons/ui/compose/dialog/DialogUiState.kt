@@ -33,7 +33,9 @@ fun LibraryDialogs(dialogUiState: DialogUiState<*>) {
         is InputDialogUiState -> InputDialog(dialogUiState)
         is TwoInputDialogUiState -> TwoInputDialog(dialogUiState)
         is RadioDialogUiState -> RadioDialog(dialogUiState)
+        is MenuOptionsDialogUiState -> MenuOptionsDialog(dialogUiState)
         is MultiSelectDialogUiState<*> -> MultiSelectDialog(dialogUiState)
+        is DropDownMenuDialogUiState -> DropDownMenuDialog(dialogUiState)
         is DateDialogUiState -> MaterialDatePickerDialog(dialogUiState)
         is TimeDialogUiState -> MaterialTimePickerDialog(dialogUiState)
     }
