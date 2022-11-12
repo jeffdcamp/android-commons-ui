@@ -5,6 +5,7 @@ Version 1.2.4 *(2022-11)*
 -------------------------
 * Added DropDownMenuDialog
 * Fixed issue with MenuOptionsDialogUiState not showing in HandleDialogs
+* Added ViewModelNav.PopWithResult
 
 Version 1.2.3 *(2022-11)*
 -------------------------
