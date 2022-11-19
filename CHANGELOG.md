@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.2.5 *(2022-11)*
+-------------------------
+* Added AppSystemBars (support theming of OS system bars)
+
 Version 1.2.4 *(2022-11)*
 -------------------------
 * Added DropDownMenuDialog
