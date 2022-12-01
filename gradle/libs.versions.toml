@@ -15,7 +15,7 @@ androidxNavigation = "2.5.3"
 androidxWindow = "1.1.0-alpha04"
 
 desugarJdkLibs = "1.2.2"
-detekt = "1.22.0-RC3"
+detekt = "1.22.0"
 
 firebaseConfig = "21.1.0"
 firebaseCore = "21.1.0"
@@ -24,7 +24,7 @@ firebaseFirestore = "24.2.1"
 
 junit = "5.9.1"
 ksp = "1.7.20-1.0.7"
-mockK = "1.13.2"
+mockK = "1.13.3"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
 timber = "5.0.1"

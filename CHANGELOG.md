@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.3.0 *(2022-11)*
+-------------------------
+* Added ClickableTextField, DateClickableTextField, TextFieldDataTextField, TextHeader, TextWithSubtitle, TextWithTitle, TimeClickableTextField 
+
 Version 1.2.5 *(2022-11)*
 -------------------------
 * Added AppSystemBars (support theming of OS system bars)
