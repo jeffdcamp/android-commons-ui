@@ -65,8 +65,6 @@ tasks.withType<GenerateBuildConfig> {
 dependencies {
     // Android
     coreLibraryDesugaring(libs.android.desugar)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(libs.androidx.lifecycle.process)
     compileOnly(libs.androidx.datastorePrefs)
@@ -77,26 +75,22 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.compose.material3.windowsize)
 
-    // UI
-    implementation(libs.androidx.window)
-
     // Navigation
     implementation(libs.androidx.navigation.compose)
 
     // Code
     implementation(libs.kotlin.coroutines.core)
-    implementation(libs.kotlin.serialization.json)
     implementation(libs.timber)
 
     // Network
-    implementation(libs.okhttp)
+//    implementation(libs.okhttp)
     compileOnly(libs.retrofit)
 
     // Test (Unit)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.engine)
     testImplementation(libs.mockK)
-    testImplementation(libs.truth)
+//    testImplementation(libs.truth)
 }
 
 // ===== TEST TASKS =====

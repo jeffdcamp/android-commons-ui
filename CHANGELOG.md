@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.3.1 *(2022-12)*
+-------------------------
+* Added containerColor to AppScaffold and AppScaffoldAndNavigation
+* Added AppBarMenuItem.TextButton, added support to set button colors on AppBarMenuItem.TextButton and AppBarMenuItem.Text
+
 Version 1.3.0 *(2022-11)*
 -------------------------
 * Added ClickableTextField, DateClickableTextField, TextFieldDataTextField, TextHeader, TextWithSubtitle, TextWithTitle, TimeClickableTextField 
