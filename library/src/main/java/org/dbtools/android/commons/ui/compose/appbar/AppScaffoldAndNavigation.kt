@@ -17,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import org.dbtools.android.commons.ui.compose.appnavbar.AppBottomNavigationItem
 import org.dbtools.android.commons.ui.compose.appnavbar.AppNavigationDrawerItem
@@ -31,6 +32,7 @@ fun AppScaffoldAndNavigation(
     navBarData: AppNavBarData? = null,
     floatingActionButton: @Composable () -> Unit = {},
     floatingActionButtonPosition: FabPosition = FabPosition.End,
+    containerColor: Color = MaterialTheme.colorScheme.background,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     when {
@@ -39,6 +41,7 @@ fun AppScaffoldAndNavigation(
                 topBar = topAppBar,
                 floatingActionButton = floatingActionButton,
                 floatingActionButtonPosition = floatingActionButtonPosition,
+                containerColor = containerColor,
                 modifier = modifier
             ) { innerPadding ->
                 AppScaffoldContentWrapper(innerPadding, content = content)
@@ -52,6 +55,7 @@ fun AppScaffoldAndNavigation(
                     bottomBar = navBarData.bottomBar(),
                     floatingActionButton = floatingActionButton,
                     floatingActionButtonPosition = floatingActionButtonPosition,
+                    containerColor = containerColor,
                     modifier = modifier
                 ) { innerPadding ->
                     AppScaffoldContentWrapper(innerPadding, navBarData, content)
@@ -65,6 +69,7 @@ fun AppScaffoldAndNavigation(
                 bottomBar = navBarData?.bottomBar() ?: {},
                 floatingActionButton = floatingActionButton,
                 floatingActionButtonPosition = floatingActionButtonPosition,
+                containerColor = containerColor,
                 modifier = modifier
             ) { innerPadding ->
                 AppScaffoldContentWrapper(innerPadding, navBarData, content)
