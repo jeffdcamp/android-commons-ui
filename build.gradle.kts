@@ -58,20 +58,14 @@ dependencyAnalysis {
             }
             onUnusedDependencies {
                 exclude(
-//                    depGroupAndName(libs.leakCanary),
                     depGroupAndName(libs.compose.ui.tooling), // Compose Previews
-//                    "androidx.test:core" // work around for supporting tests on Android 33 devices (https://issuetracker.google.com/issues/240993946) till ui-test-junit4 updates its dependencies (fixed with ui-test:1.4.0-alpha03+)
                 )
             }
             onUsedTransitiveDependencies { severity("ignore") }
             onIncorrectConfiguration { severity("ignore") }
             onCompileOnly { severity("ignore") }
             onRuntimeOnly { severity("ignore") }
-            onUnusedAnnotationProcessors {
-//                exclude(
-//                    depGroupAndName(libs.google.hilt.compiler)
-//                )
-            }
+            onUnusedAnnotationProcessors { }
         }
     }
 }
