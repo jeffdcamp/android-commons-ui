@@ -78,9 +78,6 @@ fun AppScaffoldAndNavigation(
     }
 }
 
-/**
- * Content within a Scaffold for using either
- */
 @Composable
 private fun AppScaffoldContentWrapper(
     innerPadding: PaddingValues,

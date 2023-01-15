@@ -1,6 +1,17 @@
 Change Log
 ==========
 
+Version 1.4.0 *(2023-01)*
+-------------------------
+* Change DropDownMenuDialog to use generic options
+* Added HandleSystemBarColors() to handle the colors of the OS system bars
+* Added AppTopAppBar.scrollBehavior
+* Moved many "Form" Compose widgets to "form" package
+* EnumExposedDropdownMenuBox -> DropdownMenuBoxField to support more than just Enum datatypes
+* Added FieldValidation
+* Added SwitchField
+* Other minor cleanup
+
 Version 1.3.1 *(2022-12)*
 -------------------------
 * Added containerColor to AppScaffold and AppScaffoldAndNavigation

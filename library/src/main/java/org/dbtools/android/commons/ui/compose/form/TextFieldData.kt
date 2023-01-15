@@ -1,4 +1,4 @@
-package org.dbtools.android.commons.ui.compose
+package org.dbtools.android.commons.ui.compose.form
 
 data class TextFieldData(
     val text: String,

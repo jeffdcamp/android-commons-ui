@@ -74,6 +74,7 @@ fun AppScaffold(
     navBarData: AppNavBarData? = null,
     floatingActionButton: @Composable () -> Unit = {},
     floatingActionButtonPosition: FabPosition = FabPosition.End,
+    containerColor: Color = MaterialTheme.colorScheme.background,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val appTopAppBar: @Composable (() -> Unit) = if (!hideTopAppBar) {
@@ -98,6 +99,7 @@ fun AppScaffold(
         navBarData = navBarData,
         floatingActionButton = floatingActionButton,
         floatingActionButtonPosition = floatingActionButtonPosition,
+        containerColor = containerColor,
         content = content
     )
 }

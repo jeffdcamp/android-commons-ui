@@ -2,7 +2,6 @@ package org.dbtools.android.commons.ui.compose.util
 
 import android.app.Activity
 import android.content.res.Configuration
-import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -29,7 +28,6 @@ enum class WindowSize {
 /**
  * Remembers the [WindowSize] class for the window corresponding to the current window metrics.
  */
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun Activity.rememberWindowSize(): WindowSize {
     val configuration = LocalConfiguration.current

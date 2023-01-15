@@ -1,4 +1,4 @@
-package org.dbtools.android.commons.ui.compose
+package org.dbtools.android.commons.ui.compose.form
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column

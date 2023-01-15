@@ -1,4 +1,4 @@
-package org.dbtools.android.commons.ui.compose
+package org.dbtools.android.commons.ui.compose.form
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -27,14 +27,14 @@ fun TextWithTitle(
                 text = label,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier
-                    .padding(start = 16.dp, top = 8.dp)
+                    .padding(top = 8.dp)
             )
         }
         Text(
             text = text,
             style = textStyle,
             modifier = Modifier
-                .padding(start = 16.dp, top = if (label != null) 4.dp else 8.dp, bottom = 8.dp)
+                .padding(top = if (label != null) 4.dp else 8.dp, bottom = 8.dp)
         )
     }
 }
