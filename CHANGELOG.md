@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.5.0 *(2023-01)*
+-------------------------
+* Kotlin 1.8.0, Compose 1.4.0, AGP 7.4.0
+* Support filled selected bottom icons
+* Removed AppScaffold and AppTopAppBar (Use MainAppScaffold in individual apps and call AppScaffoldAndNavigation(...) with-in)
+
 Version 1.4.0 *(2023-01)*
 -------------------------
 * Change DropDownMenuDialog to use generic options
