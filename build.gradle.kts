@@ -15,9 +15,10 @@ buildscript {
 }
 
 plugins {
-    id("com.autonomousapps.dependency-analysis") version "1.18.0"
+    id("com.autonomousapps.dependency-analysis") version "1.19.0"
 }
 
+@OptIn(ExperimentalStdlibApi::class) // to use buildList (remove with Kotlin 1.5?)
 allprojects {
     repositories {
         mavenLocal()
@@ -27,8 +28,11 @@ allprojects {
     // Gradle Dependency Check
     apply(plugin = "com.github.ben-manes.versions") // ./gradlew dependencyUpdates -Drevision=release
     val excludeVersionContaining = listOf("alpha", "eap", "dev") // example: "alpha", "beta"
-    val ignoreArtifacts = emptyList<String>() // some artifacts may be OK to check for "alpha"... add these exceptions here
-
+    val ignoreArtifacts = buildList {
+        // Compose
+        addAll(listOf("material3", "ui", "ui-tooling-preview", "ui-test-junit4", "ui-test-manifest", "material3-window-size-class", "compiler"))
+        addAll(listOf("window")) // material3 uses latest 1.1.0-alpha
+    }
     tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
         resolutionStrategy {
             componentSelection {

@@ -23,7 +23,6 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -42,7 +41,6 @@ fun <T> MultiSelectDialog(
     dismissButtonText: @Composable () -> String? = { stringResource(android.R.string.cancel) },
     onDismissButtonClicked: (() -> Unit)? = null,
     onDismissRequest: (() -> Unit) = {},
-    shape: Shape = DialogDefaults.DefaultCorner,
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
     properties: DialogProperties = DialogProperties()
 ) {
@@ -53,7 +51,7 @@ fun <T> MultiSelectDialog(
         properties = properties,
     ) {
         Surface(
-            shape = shape,
+            shape = MaterialTheme.shapes.extraLarge,
             color = backgroundColor,
         ) {
             Column(
