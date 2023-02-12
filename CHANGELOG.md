@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+Version 1.6.0 *(2023-02)*
+-------------------------
+* Kotlin 1.8.10, Compose 1.4.2, AGP 7.4.1
+* Support for Compose 1.4.0-beta, Compose M3 1.1.0-alpha06, Lifecycle 2.6.0-beta1
+* Added new M3 DatePickerDialog, TimePickerDialog support to DialogUiState 
+* Added ListItemTextHeader
+* Improvements to ViewModelNav to fix issues with popBackStackWithResult(...)
+* Prevent HandleSystemBarColors from trowing exceptions for Compose @Preview 
+* Fixed consistency issues with use of supportingText with ClickableTextField and TextFieldDataTextField
+
 Version 1.5.0 *(2023-01)*
 -------------------------
 * Kotlin 1.8.0, Compose 1.4.0, AGP 7.4.0
