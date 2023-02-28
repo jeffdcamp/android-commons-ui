@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+Version 1.7.0 *(2023-02)*
+-------------------------
+* Compose 1.4.3
+* Support for Compose 1.4.0-beta02, Compose M3 1.1.0-alpha07, Lifecycle 2.6.0-rc01
+* Added AppBarMenuItem.OverflowDivider / Improved AppBarMenuItem leading icon support
+* Merged rendering code OverflowMenus from: AppBarMenu / OverflowMenu (OverflowMenuItem is now a sealed class)
+* Added support for Divider in OverflowMenus
+* Improved spacing on TwoInputDialog
+* Added snackbarHost to AppScaffoldAndNavigation
+* Added icon to MessageDialog
+* Added supportingText to InputDialog
+
 Version 1.6.0 *(2023-02)*
 -------------------------
 * Kotlin 1.8.10, Compose 1.4.2, AGP 7.4.1
