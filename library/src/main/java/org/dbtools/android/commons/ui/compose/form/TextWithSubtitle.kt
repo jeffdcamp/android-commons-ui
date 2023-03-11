@@ -61,8 +61,8 @@ private fun Preview() {
             TextWithSubtitle(text = "888-555-1234", label = "Home")
             TextWithSubtitle(text = "888-555-0000", label = "Work")
             TextWithSubtitle(text = "888-111-2222")
-//            ListItem(headlineText = { Text("801-456-0987")}, supportingText = { Text("Home")})
-//            ListItem(headlineText = { Text("801-111-0987")}, supportingText = { Text("Home")})
+//            ListItem(headlineContent = { Text("801-456-0987")}, supportingText = { Text("Home")})
+//            ListItem(headlineContent = { Text("801-111-0987")}, supportingText = { Text("Home")})
         }
     }
 }

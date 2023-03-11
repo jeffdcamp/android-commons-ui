@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.7.1 *(2023-03)*
+-------------------------
+* Support for Compose 1.4.0-rc01, Compose M3 1.1.0-alpha08, Lifecycle 2.6.0
+* updated xxxText -> xxxContent for ListItem
+
 Version 1.7.0 *(2023-02)*
 -------------------------
 * Compose 1.4.3
