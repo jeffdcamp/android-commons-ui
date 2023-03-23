@@ -1,7 +1,13 @@
 Change Log
 ==========
 
-Version 1.7.1 *(2023-03)*
+Version 1.7.2 *(2023-03)*
+-------------------------
+* Support for Compose 1.4.0, Compose M3 1.1.0-beta01, Lifecycle 2.6.1
+* Added DateRangePickerDialog
+* Added Date Validator to DatePickerDialog
+
+  Version 1.7.1 *(2023-03)*
 -------------------------
 * Support for Compose 1.4.0-rc01, Compose M3 1.1.0-alpha08, Lifecycle 2.6.0
 * updated xxxText -> xxxContent for ListItem
