@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -47,8 +48,8 @@ fun DayNightTextField(
     singleLine: Boolean = false,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    shape: Shape = TextFieldDefaults.filledShape,
-    colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
+    shape: Shape = if (isSystemInDarkTheme()) TextFieldDefaults.shape else OutlinedTextFieldDefaults.shape,
+    colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.colors() else OutlinedTextFieldDefaults.colors()
 ) {
     var textFieldValueState by remember { mutableStateOf(TextFieldValue(text = value)) }
     val textFieldValue = textFieldValueState.copy(text = value)
@@ -102,8 +103,8 @@ fun DayNightTextField(
     singleLine: Boolean = false,
     maxLines: Int = Int.MAX_VALUE,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    shape: Shape = TextFieldDefaults.filledShape,
-    colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.textFieldColors() else TextFieldDefaults.outlinedTextFieldColors()
+    shape: Shape = if (isSystemInDarkTheme()) TextFieldDefaults.shape else OutlinedTextFieldDefaults.shape,
+    colors: TextFieldColors = if (isSystemInDarkTheme()) TextFieldDefaults.colors() else OutlinedTextFieldDefaults.colors()
 ) {
     if (isSystemInDarkTheme()) {
         TextField(
