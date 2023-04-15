@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 1.7.3 *(2023-04)*
+-------------------------
+* Support for Compose 1.4.1, Compose M3 1.1.0-beta02
+* Kotlin 1.8.20 / Java 17 / Gradle 8.0.2 / AGP 8.0.0
+* Added TextUnitExt.nonScaledSp
+* Minor improvements to OverflowMenu
+
 Version 1.7.2 *(2023-03)*
 -------------------------
 * Support for Compose 1.4.0, Compose M3 1.1.0-beta01, Lifecycle 2.6.1

@@ -12,6 +12,8 @@ plugins {
 }
 
 android {
+    namespace = "org.dbtools.android.commons.ui"
+
     compileSdk = AndroidSdk.COMPILE
 
     defaultConfig {
@@ -20,12 +22,13 @@ android {
     }
 
     compileOptions {
-        // Flag to enable support for the new language APIs
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_17
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
         freeCompilerArgs = listOf(
             "-module-name", Pom.LIBRARY_ARTIFACT_ID,
             "-Xopt-in=kotlin.RequiresOptIn",
@@ -114,7 +117,7 @@ tasks.register<de.undercouch.gradle.tasks.download.Download>("downloadDetektConf
 // make sure when running detekt, the config file is downloaded
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     // Target version of the generated JVM bytecode. It is used for type resolution.
-    this.jvmTarget = "1.8"
+    this.jvmTarget = "17"
     dependsOn("downloadDetektConfig")
 }
 
