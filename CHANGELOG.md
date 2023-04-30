@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.7.4 *(2023-04)*
+-------------------------
+* Added SavedStateHandleExt
+* Fixes for androidxNavigation 2.6.0-beta01
+
 Version 1.7.3 *(2023-04)*
 -------------------------
 * Support for Compose 1.4.1, Compose M3 1.1.0-beta02
