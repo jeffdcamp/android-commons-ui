@@ -15,7 +15,7 @@ androidxNavigation = "2.6.0-beta01"
 androidxWindow = "1.1.0-beta02"
 
 desugarJdkLibs = "2.0.3"
-detekt = "1.22.0"
+detekt = "1.23.0"
 
 firebaseConfig = "21.3.0"
 firebaseCore = "21.1.1"
