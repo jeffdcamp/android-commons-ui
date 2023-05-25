@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.7.5 *(2023-05)*
+-------------------------
+* Expanded SavedStateHandleExt
+* Fixed PlainTooltipBox
+* Updated versions
+
 Version 1.7.4 *(2023-04)*
 -------------------------
 * Added SavedStateHandleExt
