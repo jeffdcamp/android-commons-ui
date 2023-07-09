@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version NEXT *(2023-05)*
+-------------------------
+* Added popBackStack to navigate(routes: List<String>)
+* Updated versions
+* Javadoc Improvements
+
 Version 1.7.5 *(2023-05)*
 -------------------------
 * Expanded SavedStateHandleExt
