@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.NavOptionsBuilder
@@ -23,7 +23,7 @@ interface ViewModelNav {
     val navigatorFlow: StateFlow<ViewModelNavigator?>
 
     fun navigate(route: String, popBackStack: Boolean = false)
-    fun navigate(routes: List<String>)
+    fun navigate(routes: List<String>, popBackStack: Boolean = false)
     fun navigate(route: String, navOptions: NavOptions)
     fun navigate(route: String, optionsBuilder: NavOptionsBuilder.() -> Unit)
     fun navigate(intent: Intent, options: Bundle? = null, popBackStack: Boolean = false)
@@ -41,8 +41,8 @@ class ViewModelNavImpl : ViewModelNav {
         _navigatorFlow.compareAndSet(null, if (popBackStack) ViewModelNavigator.PopAndNavigate(route) else ViewModelNavigator.Navigate(route))
     }
 
-    override fun navigate(routes: List<String>) {
-        _navigatorFlow.compareAndSet(null, ViewModelNavigator.NavigateMultiple(routes))
+    override fun navigate(routes: List<String>, popBackStack: Boolean) {
+        _navigatorFlow.compareAndSet(null, if (popBackStack) ViewModelNavigator.PopAndNavigateMultiple(routes) else ViewModelNavigator.NavigateMultiple(routes))
     }
 
     override fun navigate(route: String, navOptions: NavOptions) {
@@ -97,6 +97,18 @@ sealed class ViewModelNavigator {
 
             viewModelNav.resetNavigate(this)
             return false
+        }
+    }
+
+    class PopAndNavigateMultiple(private val routes: List<String>) : ViewModelNavigator() {
+        override fun navigate(context: Context, navController: NavController, viewModelNav: ViewModelNav): Boolean {
+            val stackPopped = navController.popBackStack()
+            routes.forEach { route ->
+                navController.navigate(route)
+            }
+
+            viewModelNav.resetNavigate(this)
+            return stackPopped
         }
     }
 
@@ -177,7 +189,7 @@ fun HandleNavigation(
     navController: NavController?
 ) {
     navController ?: return
-    val navigator by viewModelNav.navigatorFlow.collectAsState()
+    val navigator by viewModelNav.navigatorFlow.collectAsStateWithLifecycle()
 
     val context = LocalContext.current
     LaunchedEffect(navigator) {
