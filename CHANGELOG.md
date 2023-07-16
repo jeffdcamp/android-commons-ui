@@ -1,9 +1,12 @@
 Change Log
 ==========
 
-Version NEXT *(2023-05)*
+Version 1.8.0 *(2023-05)*
 -------------------------
 * Added popBackStack to navigate(routes: List<String>)
+* Improvements to dialogs to better support M3
+* Added ProgressIndicatorDialog
+* Improvements to ListItemTextHeader
 * Updated versions
 * Javadoc Improvements
 
