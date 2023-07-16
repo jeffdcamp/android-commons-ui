@@ -7,12 +7,12 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.StateFlow
 import org.dbtools.android.commons.ui.compose.DayNightTextField
 
@@ -25,7 +25,7 @@ fun <T> DropdownMenuBoxField(
     modifier: Modifier = Modifier,
     label: String? = null
 ) {
-    val selectedOption by selectedOptionFlow.collectAsState()
+    val selectedOption by selectedOptionFlow.collectAsStateWithLifecycle()
     var expanded by remember { mutableStateOf(false) }
 
     ExposedDropdownMenuBox(

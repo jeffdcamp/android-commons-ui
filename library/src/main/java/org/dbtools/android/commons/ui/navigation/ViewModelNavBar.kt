@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavOptions
@@ -179,7 +180,7 @@ fun <T : Enum<T>> HandleNavBarNavigation(
     navController: NavController?
 ) {
     navController ?: return
-    val navigator by viewModelNavBar.navigatorFlow.collectAsState()
+    val navigator by viewModelNavBar.navigatorFlow.collectAsStateWithLifecycle()
 
     val context = LocalContext.current
     LaunchedEffect(navigator) {

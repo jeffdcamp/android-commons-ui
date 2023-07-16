@@ -40,12 +40,12 @@ fun DatePickerDialog(
             }
         },
         dismissButton = if (onDismissButtonClicked != null) {{
-            TextButton(
-                onClick = onDismissButtonClicked,
-            ) {
-                Text(dialogUiState.dismissButtonText())
+                TextButton(
+                    onClick = onDismissButtonClicked,
+                ) {
+                    Text(dialogUiState.dismissButtonText())
+                }
             }
-        }
         } else null,
     ) {
         DatePicker(

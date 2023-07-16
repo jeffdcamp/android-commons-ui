@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -27,6 +28,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -42,7 +44,8 @@ fun <T> MultiSelectDialog(
     onDismissButtonClicked: (() -> Unit)? = null,
     onDismissRequest: (() -> Unit) = {},
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(),
+    tonalElevation: Dp = AlertDialogDefaults.TonalElevation
 ) {
     val savedSelectedItems = remember { selectedItems.toMutableStateList() }
 
@@ -53,6 +56,7 @@ fun <T> MultiSelectDialog(
         Surface(
             shape = MaterialTheme.shapes.extraLarge,
             color = backgroundColor,
+            tonalElevation = tonalElevation
         ) {
             Column(
                 modifier = Modifier.padding(DialogDefaults.DialogPadding)

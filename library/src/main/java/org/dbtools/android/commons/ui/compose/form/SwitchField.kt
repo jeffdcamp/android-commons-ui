@@ -8,11 +8,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun SwitchField(label: String, checkedFlow: StateFlow<Boolean>, onCheckedChange: (Boolean) -> Unit, modifier: Modifier = Modifier) {
-    val checked by checkedFlow.collectAsState()
+    val checked by checkedFlow.collectAsStateWithLifecycle()
 
     Box(modifier = modifier) {
         Text(
