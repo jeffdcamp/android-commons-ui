@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.8.1 *(2023-07)*
+-------------------------
+* Added DropdownMenuBoxField without a Flow for selectedOption
+
 Version 1.8.0 *(2023-05)*
 -------------------------
 * Added popBackStack to navigate(routes: List<String>)
