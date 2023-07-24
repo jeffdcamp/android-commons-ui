@@ -1,9 +1,9 @@
 package org.dbtools.android.commons.ui.compose
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,8 +17,9 @@ import androidx.compose.ui.unit.dp
 fun TextHeader(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
-    style: TextStyle = MaterialTheme.typography.bodyMedium,
+    color: Color = MaterialTheme.colorScheme.primary,
+    style: TextStyle = MaterialTheme.typography.titleSmall,
+    textPadding: PaddingValues = PaddingValues(bottom = 8.dp),
 ) {
     Surface(modifier) {
         Column {
@@ -26,11 +27,10 @@ fun TextHeader(
                 text = text,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 8.dp),
+                    .padding(textPadding),
                 color = color,
                 style = style
             )
-            Divider()
         }
     }
 }

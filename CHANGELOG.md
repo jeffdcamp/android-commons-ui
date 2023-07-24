@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.8.2 *(2023-07)*
+-------------------------
+* Kotlin 1.9.0
+* Improved TextHeader to match ListItemTextHeader 
+
 Version 1.8.1 *(2023-07)*
 -------------------------
 * Added DropdownMenuBoxField without a Flow for selectedOption
