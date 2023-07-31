@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha01 *(2023-07)*
+-------------------------
+* Compose UI 1.5.0-rc01
+* Material3 Compose 1.2.0-alpha04
+* Navigation Compose 2.7.0-rc01
+* Fixes/Changes to support above
+* Added SmallTextButton 
+* Added ContentAlpha
+
 Version 1.8.2 *(2023-07)*
 -------------------------
 * Kotlin 1.9.0
