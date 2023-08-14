@@ -162,7 +162,7 @@ data class RadioDialogDataItem<T>(val item: T, val text: @Composable () -> Strin
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun TestRadioDialog() {
+private fun Preview() {
     val radioItems: RadioDialogDataItems<String> = RadioDialogDataItems(
         listOf(
             RadioDialogDataItem("id1") { "A" },

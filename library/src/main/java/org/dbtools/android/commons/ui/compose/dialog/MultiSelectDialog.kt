@@ -187,7 +187,7 @@ data class MultiSelectDataItem<T>(val item: T, val text: @Composable () -> Strin
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun PreviewMultiSelectDialog() {
+private fun Preview() {
     val items = listOf(
         MultiSelectDataItem("id1") { "A" },
         MultiSelectDataItem("id2") { "B" },

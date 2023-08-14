@@ -90,7 +90,7 @@ data class MenuOptionsDialogUiState(
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-fun PreviewMenuOptionsDialog() {
+private fun Preview() {
     MaterialTheme {
         MenuOptionsDialog(
             onDismissRequest = {},

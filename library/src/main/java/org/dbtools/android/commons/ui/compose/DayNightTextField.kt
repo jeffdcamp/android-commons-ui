@@ -158,7 +158,7 @@ fun DayNightTextField(
 @Preview(group = "light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-fun PreviewDayNightTextField() {
+private fun Preview() {
     MaterialTheme {
         Surface {
             DayNightTextField(

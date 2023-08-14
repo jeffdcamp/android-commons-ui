@@ -112,7 +112,7 @@ data class ProgressIndicatorDialogUiState(
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun PreviewInputDialog() {
+private fun Preview() {
     MaterialTheme {
         ProgressIndicatorDialog(
             title = "Title",

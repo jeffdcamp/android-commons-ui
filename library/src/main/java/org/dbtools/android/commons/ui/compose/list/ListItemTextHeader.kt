@@ -40,7 +40,7 @@ fun ListItemTextHeader(
 
 @Preview
 @Composable
-private fun ListItemTextHeaderPreview() {
+private fun Preview() {
     MaterialTheme {
         Surface {
             Column(

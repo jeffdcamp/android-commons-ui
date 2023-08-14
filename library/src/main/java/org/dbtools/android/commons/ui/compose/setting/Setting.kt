@@ -217,7 +217,7 @@ private fun Float.round(decimalPlaces: Int): Float {
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun SettingsPreview() {
+private fun Preview() {
     val currentThemeTitleFlow = MutableStateFlow("Light Theme")
     val sortByLastNameFlow = MutableStateFlow(true)
     val currentLastInstalledVersionCodeFlow = MutableStateFlow("1234")
