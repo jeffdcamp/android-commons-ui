@@ -84,7 +84,9 @@ dependencies {
 
     // Code
     implementation(libs.kotlin.coroutines.core)
-    implementation(libs.timber)
+
+    // Logging
+    implementation(libs.kermit)
 
     // Network
 //    implementation(libs.okhttp)
@@ -110,7 +112,7 @@ tasks.withType<Test> {
 tasks.register<de.undercouch.gradle.tasks.download.Download>("downloadDetektConfig") {
     download {
         onlyIf { !file("build/config/detektConfig.yml").exists() }
-        src("https://raw.githubusercontent.com/ICSEng/AndroidPublic/main/detekt/detektConfig-20230629.yml")
+        src("https://raw.githubusercontent.com/ICSEng/AndroidPublic/main/detekt/detektConfig-20230728.yml")
         dest("build/config/detektConfig.yml")
     }
 }

@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha02 *(2023-08)*
+-------------------------
+* Compose UI 1.5.0
+* Material3 Compose 1.2.0-alpha05
+* Navigation Compose 2.7.0
+* Support DateClickableTextField and TimeClickableTextField without a Flow
+* Changed Timber to Kermit Logger
+
 Version 1.9.0-alpha01 *(2023-07)*
 -------------------------
 * Compose UI 1.5.0-rc01

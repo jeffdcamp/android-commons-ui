@@ -23,10 +23,10 @@ firebaseCrashlytics = "18.4.0"
 firebaseFirestore = "24.7.0"
 
 junit = "5.10.0"
+kermit = "2.0.0-RC5"
 mockK = "1.13.7"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
-timber = "5.0.1"
 truth = "1.1.5"
 versionsGradlePlugin = "0.47.0"
 
@@ -64,6 +64,8 @@ google-firebase-firestore = { module = "com.google.firebase:firebase-firestore-k
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlin-gradlePluginClasspath = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -72,8 +74,6 @@ kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializat
 mockK = { module = "io.mockk:mockk", version.ref = "mockK" }
 
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-
-timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
