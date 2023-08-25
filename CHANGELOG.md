@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha03 *(2023-08)*
+-------------------------
+* Improved support for Compose Navigation Animations when creating routes
+* Material3 Compose 1.2.0-alpha06
+* Updated other versions
+
 Version 1.9.0-alpha02 *(2023-08)*
 -------------------------
 * Compose UI 1.5.0
