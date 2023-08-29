@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
     signing
     kotlin("android")
-    id("de.undercouch.download") version "5.4.0"
+    id("de.undercouch.download") version "5.5.0"
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.detekt)
 }

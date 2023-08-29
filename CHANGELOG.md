@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha04 *(2023-08)*
+-------------------------
+* Added contentWindowInsets to AppScaffoldAndNavigation (passed on to the Scaffold)
+
 Version 1.9.0-alpha03 *(2023-08)*
 -------------------------
 * Improved support for Compose Navigation Animations when creating routes
