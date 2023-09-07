@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha05 *(2023-09)*
+-------------------------
+* Kotlin 1.9.10
+* Material3 Compose 1.2.0-alpha07
+
 Version 1.9.0-alpha04 *(2023-08)*
 -------------------------
 * Added contentWindowInsets to AppScaffoldAndNavigation (passed on to the Scaffold)

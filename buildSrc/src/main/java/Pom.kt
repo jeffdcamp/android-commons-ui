@@ -6,7 +6,7 @@ object AndroidSdk {
 
 object Pom {
     const val GROUP_ID = "org.dbtools"
-    const val VERSION_NAME = "1.9.0-alpha04"
+    const val VERSION_NAME = "1.9.0-alpha05"
     const val POM_DESCRIPTION = "Android Commons UI"
 
     const val URL = "https://github.com/jeffdcamp/android-commons-ui/"

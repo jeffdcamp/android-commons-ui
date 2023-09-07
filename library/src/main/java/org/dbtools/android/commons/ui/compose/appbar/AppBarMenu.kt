@@ -13,9 +13,11 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.PlainTooltipBox
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,12 +51,13 @@ fun AppBarMenu(menuItems: List<AppBarMenuItem>) {
 
 @Composable
 fun AppBarIcon(imageVector: ImageVector, contentDescription: String, action: () -> Unit) {
-    PlainTooltipBox(
-        tooltip = { Text(contentDescription) }
+    TooltipBox(
+        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+        tooltip = { Text(contentDescription) },
+        state = rememberTooltipState()
     ) {
         IconButton(
             onClick = action,
-            modifier = Modifier.tooltipTrigger()
         ) {
             Icon(
                 imageVector = imageVector,
@@ -66,12 +69,13 @@ fun AppBarIcon(imageVector: ImageVector, contentDescription: String, action: () 
 
 @Composable
 fun AppBarIcon(menuItem: AppBarMenuItem.Icon) {
-    PlainTooltipBox(
-        tooltip = { Text(menuItem.text()) }
+    TooltipBox(
+        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+        tooltip = { Text(menuItem.text()) },
+        state = rememberTooltipState()
     ) {
         IconButton(
             onClick = { menuItem.action() },
-            modifier = Modifier.tooltipTrigger()
         ) {
             Icon(
                 imageVector = menuItem.imageVector,

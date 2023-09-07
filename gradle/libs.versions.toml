@@ -1,31 +1,21 @@
 [versions]
 agp = "8.1.1"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 kotlinxCoroutines = "1.7.3"
-kotlinxSerialization = "1.6.0"
 
-androidxActivity = "1.7.2"
-androidxComposeCompiler = "1.5.2"
-androidxComposeMaterial = "1.5.0"
-androidxComposeMaterial3 = "1.2.0-alpha06"
-androidxComposeUi = "1.5.0"
+androidxComposeCompiler = "1.5.3"
+androidxComposeMaterial3 = "1.2.0-alpha07"
+androidxComposeUi = "1.5.1"
 androidxDataStore = "1.0.0"
-androidxLifecycle = "2.6.1"
-androidxNavigation = "2.7.1"
-androidxWindow = "1.1.0"
+androidxLifecycle = "2.6.2"
+androidxNavigation = "2.7.2"
 
 desugarJdkLibs = "2.0.3"
 detekt = "1.23.1"
 
-firebaseConfig = "21.4.1"
-firebaseCore = "21.1.1"
-firebaseCrashlytics = "18.4.1"
-firebaseFirestore = "24.7.1"
-
 junit = "5.10.0"
 kermit = "2.0.0-RC5"
 mockK = "1.13.7"
-okhttp = "4.10.0"
 retrofit = "2.9.0"
 versionsGradlePlugin = "0.47.0"
 
@@ -37,28 +27,16 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 android-gradlePluginClasspath = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 android-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 
-androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "androidxActivity" }
 androidx-datastorePrefs = { module = "androidx.datastore:datastore-preferences", version.ref = "androidxDataStore" }
 androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidxLifecycle" }
-androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidxLifecycle" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
-androidx-window = { module = "androidx.window:window", version.ref = "androidxWindow" }
 
-compose-material-iconsext = { module = "androidx.compose.material:material-icons-extended", version.ref = "androidxComposeMaterial" } # Material design icons (extended)
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidxComposeMaterial3" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androidxComposeUi" }
-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidxComposeUi" }
-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidxComposeUi" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidxComposeUi" } # Tooling support (Previews, etc.)
 compose-material3-windowsize = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "androidxComposeMaterial3" }
-
-# Firebase - https://firebase.google.com/support/release-notes/android
-google-firebase-config = { module = "com.google.firebase:firebase-config-ktx", version.ref = "firebaseConfig" }
-google-firebase-core = { module = "com.google.firebase:firebase-core", version.ref = "firebaseCore" }
-google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx", version.ref = "firebaseCrashlytics" }
-google-firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestore"  }
 
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
@@ -66,9 +44,7 @@ junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref 
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
-kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlin-gradlePluginClasspath = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
 mockK = { module = "io.mockk:mockk", version.ref = "mockK" }
 
