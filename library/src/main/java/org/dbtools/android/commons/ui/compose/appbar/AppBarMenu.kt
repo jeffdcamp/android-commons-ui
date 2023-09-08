@@ -13,6 +13,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TooltipBox
@@ -50,10 +51,19 @@ fun AppBarMenu(menuItems: List<AppBarMenuItem>) {
 }
 
 @Composable
+fun AppBarIcon(menuItem: AppBarMenuItem.Icon) {
+    AppBarIcon(menuItem.imageVector, menuItem.text(), menuItem.action)
+}
+
+@Composable
 fun AppBarIcon(imageVector: ImageVector, contentDescription: String, action: () -> Unit) {
     TooltipBox(
         positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-        tooltip = { Text(contentDescription) },
+        tooltip = {
+            PlainTooltip {
+                Text(contentDescription)
+            }
+        },
         state = rememberTooltipState()
     ) {
         IconButton(
@@ -62,24 +72,6 @@ fun AppBarIcon(imageVector: ImageVector, contentDescription: String, action: () 
             Icon(
                 imageVector = imageVector,
                 contentDescription = contentDescription,
-            )
-        }
-    }
-}
-
-@Composable
-fun AppBarIcon(menuItem: AppBarMenuItem.Icon) {
-    TooltipBox(
-        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-        tooltip = { Text(menuItem.text()) },
-        state = rememberTooltipState()
-    ) {
-        IconButton(
-            onClick = { menuItem.action() },
-        ) {
-            Icon(
-                imageVector = menuItem.imageVector,
-                contentDescription = menuItem.text()
             )
         }
     }
