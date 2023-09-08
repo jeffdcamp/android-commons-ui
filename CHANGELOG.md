@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha06 *(2023-09)*
+-------------------------
+* Improvements to AppBarIcon Tooltip
+
 Version 1.9.0-alpha05 *(2023-09)*
 -------------------------
 * Kotlin 1.9.10
