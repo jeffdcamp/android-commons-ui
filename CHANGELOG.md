@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.9.0-alpha07 *(2023-09)*
+-------------------------
+* Added supportingText to Dialogs and consistency fixes to all dialogs
+* Added NavigationAction
+
 Version 1.9.0-alpha06 *(2023-09)*
 -------------------------
 * Improvements to AppBarIcon Tooltip
