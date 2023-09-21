@@ -84,6 +84,7 @@ dependencies {
 
     // Code
     implementation(libs.kotlin.coroutines.core)
+    implementation(libs.kotlin.time)
 
     // Logging
     implementation(libs.kermit)

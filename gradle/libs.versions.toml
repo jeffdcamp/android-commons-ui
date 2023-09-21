@@ -2,6 +2,7 @@
 agp = "8.1.1"
 kotlin = "1.9.10"
 kotlinxCoroutines = "1.7.3"
+kotlinxDateTime = "0.4.1"
 
 androidxComposeCompiler = "1.5.3"
 androidxComposeMaterial3 = "1.2.0-alpha07"
@@ -45,6 +46,7 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlin-gradlePluginClasspath = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-time = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDateTime" }
 
 mockK = { module = "io.mockk:mockk", version.ref = "mockK" }
 

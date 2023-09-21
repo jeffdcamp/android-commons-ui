@@ -37,7 +37,8 @@ import androidx.compose.ui.window.DialogProperties
 fun <T> MultiSelectDialog(
     allItems: List<MultiSelectDataItem<T>>,
     selectedItems: List<T>,
-    title: @Composable () -> String? = { null },
+    title: String? = null,
+    supportingText: String? = null,
     confirmButtonText: @Composable () -> String? = { stringResource(android.R.string.ok) },
     onConfirmButtonClicked: ((List<T>) -> Unit)? = null,
     dismissButtonText: @Composable () -> String? = { stringResource(android.R.string.cancel) },
@@ -62,11 +63,19 @@ fun <T> MultiSelectDialog(
                 modifier = Modifier.padding(DialogDefaults.DialogPadding)
             ) {
                 // Title
-                val titleText = title()
-                if (titleText != null) {
+                if (title != null) {
                     Text(
-                        text = titleText,
+                        text = title,
                         style = MaterialTheme.typography.headlineSmall
+                    )
+                }
+
+                // Supporting Text
+                if (supportingText != null) {
+                    Text(
+                        text = supportingText,
+                        modifier = Modifier.padding(top = 16.dp),
+                        style = MaterialTheme.typography.bodyMedium
                     )
                 }
 
@@ -160,7 +169,8 @@ fun <T> MultiSelectDialog(
     MultiSelectDialog(
         allItems = dialogUiState.allItems,
         selectedItems = dialogUiState.selectedItems,
-        title = dialogUiState.title,
+        title = dialogUiState.title?.invoke(),
+        supportingText = dialogUiState.supportingText?.invoke(),
         onConfirmButtonClicked = { dialogUiState.onConfirm?.invoke(it) },
         onDismissRequest = { dialogUiState.onDismissRequest() },
         onDismissButtonClicked = if (dialogUiState.onDismiss != null) {
@@ -174,7 +184,8 @@ fun <T> MultiSelectDialog(
 data class MultiSelectDialogUiState<T>(
     val allItems: List<MultiSelectDataItem<T>>,
     val selectedItems: List<T>,
-    val title: @Composable () -> String? = { null },
+    val title: @Composable (() -> String)? = null,
+    val supportingText: @Composable (() -> String)? = null,
     val confirmButtonText: @Composable () -> String? = { stringResource(android.R.string.ok) },
     val dismissButtonText: @Composable () -> String? = { stringResource(android.R.string.cancel) },
     override val onConfirm: ((List<T>) -> Unit)? = null,
@@ -187,18 +198,19 @@ data class MultiSelectDataItem<T>(val item: T, val text: @Composable () -> Strin
 @Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
 @Composable
-private fun Preview() {
+private fun PreviewMultiSelectDialog() {
     val items = listOf(
         MultiSelectDataItem("id1") { "A" },
         MultiSelectDataItem("id2") { "B" },
-        MultiSelectDataItem( "id3") { "C" },
+        MultiSelectDataItem("id3") { "C" },
     )
 
     val selectedItems = listOf("id2", "id3")
 
     MaterialTheme {
         MultiSelectDialog(
-            title = { "Title" },
+            title = "Title",
+            supportingText = "Here is some supporting text",
             allItems = items,
             selectedItems = selectedItems,
             onConfirmButtonClicked = { },
