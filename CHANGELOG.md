@@ -1,6 +1,20 @@
-Change Log
-==========
+# Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.9.0-alpha08] - 2022-09-28
+
+### Changed
+
+- Changed all NavigationAction classes to "data class"
+- Updated versions
+- Updated format of changelog
+ 
 Version 1.9.0-alpha07 *(2023-09)*
 -------------------------
 * Added supportingText to Dialogs and consistency fixes to all dialogs
