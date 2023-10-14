@@ -14,7 +14,7 @@ import org.dbtools.android.commons.ui.compose.DayNightTextField
 import org.dbtools.android.commons.ui.compose.util.formKeyEventHandler
 
 @Composable
-fun FormTextField(
+fun FlowTextField(
     label: String,
     textFlow: StateFlow<String>,
     onChange: (String) -> Unit,
