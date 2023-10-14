@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha09] - 2022-09-28
+
+### Added
+
+- FlowTextField and PasswordFlowTextField 
+- Updated versions
+- Updated format of changelog
+
+### Changed
+
+- Better support for error text in DateClickableTextField, TimeClickableTextField, SwitchField
+- Deprecated TextFieldDataTextField / TextFieldData (use FlowTextField)
+
 ## [1.9.0-alpha08] - 2022-09-28
 
 ### Changed

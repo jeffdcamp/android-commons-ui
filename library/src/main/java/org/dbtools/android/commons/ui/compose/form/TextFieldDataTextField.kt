@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import org.dbtools.android.commons.ui.compose.DayNightTextField
 import org.dbtools.android.commons.ui.compose.util.formKeyEventHandler
 
+@Deprecated("Use FlowTextField")
 @Composable
 fun TextFieldDataTextField(
     label: String,
