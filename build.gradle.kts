@@ -15,7 +15,7 @@ buildscript {
 }
 
 plugins {
-    id("com.autonomousapps.dependency-analysis") version "1.22.0"
+    id("com.autonomousapps.dependency-analysis") version "1.25.0"
 }
 
 @OptIn(ExperimentalStdlibApi::class) // to use buildList (remove with Kotlin 1.5?)
