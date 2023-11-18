@@ -7,13 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.9.0-alpha10] - 2022-10-14
+## [1.9.0-alpha11] - 2023-11-18
+
+### Added
+
+- Added ImagekitUrlBuilder, ImageKitAssetInterceptor to support imagekit.io and coil
+
+### Changed
+
+- Kotlin 1.9.20 / Compose M3 1.2.0-alpha11 / ComposeUi 1.6.0-beta01
+- Improved support for UI UseCase by changing showMessageDialog to be used anywhere (not just in ViewModels)
+- Added contentDescription and iconTintColor to OverflowMenu
+
+## [1.9.0-alpha10] - 2023-10-14
 
 ### Changed
 
 - Renamed FormTextField to FlowTextField 
 
-## [1.9.0-alpha09] - 2022-10-14
+## [1.9.0-alpha09] - 2023-10-14
 
 ### Added
 
@@ -26,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better support for error text in DateClickableTextField, TimeClickableTextField, SwitchField
 - Deprecated TextFieldDataTextField / TextFieldData (use FlowTextField)
 
-## [1.9.0-alpha08] - 2022-09-28
+## [1.9.0-alpha08] - 2023-09-28
 
 ### Changed
 
