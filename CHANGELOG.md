@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha12] - 2023-11-20
+
+### Added
+
+- Added ImageScrim, ImageScrimTopDown, ImageScrimStartEnd, ImageScrimEndStart
+
+### Changed
+
+- Added more options to ImageKitAsset
+
 ## [1.9.0-alpha11] - 2023-11-18
 
 ### Added
