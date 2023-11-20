@@ -19,6 +19,7 @@ class ImagekitUrlBuilderTest {
         val url = ImagekitUrlBuilder("demo", "medium_cafe_B1iTdD0C.jpg")
             .width(500)
             .height(1000)
+
             .create()
 
         assertThat(url).isEqualTo("https://ik.imagekit.io/demo/medium_cafe_B1iTdD0C.jpg?tr=w-500,h-1000")

@@ -61,13 +61,32 @@ class ImageKitAssetInterceptor(val endpoint: String): Interceptor {
             }
         }
 
-        // Blur
-        data.blur?.let { builder.blur(it) }
+        if (data.round) {
+            builder.round()
+        }
 
-        // Focus
+        if (data.trim) {
+            builder.trim(true)
+        }
+
         if (data.focusX != null && data.focusY != null) {
             builder.focus(data.focusX, data.focusY)
         }
+
+        if (data.aspectWidth != null && data.aspectHeight != null) {
+            builder.aspectRatio(data.aspectWidth, data.aspectHeight)
+        }
+
+        data.quality?.let { builder.quality(it) }
+        data.radius?.let { builder.radius(it) }
+        data.backgroundColor?.let { builder.background(it) }
+        data.rotation?.let { builder.rotation(it) }
+        data.blur?.let { builder.blur(it) }
+        data.effectSharpen?.let { builder.effectSharpen(it) }
+        data.focusType?.let { builder.focus(it) }
+        data.cropType?.let { builder.crop(it) }
+        data.cropModeType?.let { builder.cropMode(it) }
+        data.format?.let { builder.format(it) }
 
         return builder.create().toHttpUrl()
     }
@@ -76,9 +95,27 @@ class ImageKitAssetInterceptor(val endpoint: String): Interceptor {
 data class ImageKitAsset(
     val identifier: String,
     val preferredSize: ImageKitAssetAspect = ImageKitAssetAspect.CONFINED_HEIGHT,
+    val aspectWidth: Int? = null,
+    val aspectHeight: Int? = null,
+    val quality: Int? = null,
+    val radius: Int? = null,
+    val round: Boolean = false,
+    val trim: Boolean = false,
+    val backgroundColor: String? = null,
+    val rotation: Rotation? = null,
+
+    val cropType: CropType? = null,
+    val cropModeType: CropMode? = null,
+    val focusType: FocusType? = null,
+
     val blur: Int? = null,
+    val effectSharpen: Int? = null,
     val focusX: Int? = null,
     val focusY: Int? = null,
+
+    val format: Format? = null,
+    val streamingFormat: StreamingFormat? = null,
+
 )
 
 enum class ImageKitAssetAspect {
