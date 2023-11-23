@@ -46,6 +46,21 @@ fun BoxScope.ImageScrimTopDown(
 }
 
 @Composable
+fun BoxScope.ImageScrimBottomUp(
+    modifier: Modifier = Modifier,
+    alpha: Float = 0.15f,
+    height: Dp = 100.dp
+) {
+    Box(
+        modifier = modifier
+            .height(height)
+            .fillMaxWidth()
+            .align(Alignment.BottomCenter)
+            .background(brush = Brush.verticalGradient(colors = listOf(Color.Transparent, Color.Black.copy(alpha = alpha))))
+    )
+}
+
+@Composable
 fun BoxScope.ImageScrimStartEnd(
     modifier: Modifier = Modifier,
     alpha: Float = 0.15f,
