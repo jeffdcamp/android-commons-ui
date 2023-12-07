@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha13] - 2023-11-20
+
+### Added
+
+- Added ImageScrimBottomUp
+
+### Changed
+
+- Kotlin 1.9.21 / Compose M3 1.2.0-alpha12 / ComposeUi 1.6.0-beta02 / Other version updates
+- Gradle 8.5
+
 ## [1.9.0-alpha12] - 2023-11-20
 
 ### Added
