@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-beta02] - 2024-01-11
+
+### Changed
+
+- Kotlin 1.9.22 / Compose M3 1.2.0-beta02 / ComposeUi 1.6.0-rc01 / Other version updates
+
 ## [1.9.0-beta01] - 2023-12-13
 
 ### Changed

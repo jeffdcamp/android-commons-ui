@@ -1,14 +1,14 @@
 [versions]
-agp = "8.2.0"
-kotlin = "1.9.21"
-kotlinxCoroutines = "1.8.0-RC"
+agp = "8.2.1"
+kotlin = "1.9.22"
+kotlinxCoroutines = "1.8.0-RC2"
 kotlinxDateTime = "0.5.0"
 
-androidxComposeCompiler = "1.5.6"
-androidxComposeMaterial3 = "1.2.0-beta01"
-androidxComposeUi = "1.6.0-beta03"
-androidxDataStore = "1.0.0"
-androidxLifecycle = "2.7.0-rc02"
+androidxComposeCompiler = "1.5.8"
+androidxComposeMaterial3 = "1.2.0-beta02"
+androidxComposeUi = "1.6.0-rc01"
+androidxDataStore = "1.1.0-beta01"
+androidxLifecycle = "2.7.0"
 androidxNavigation = "2.7.6"
 assertk = "0.28.0"
 coil = "2.5.0"
@@ -17,7 +17,7 @@ detekt = "1.23.4"
 
 junit = "5.10.1"
 kermit = "2.0.2"
-mockK = "1.13.8"
+mockK = "1.13.9"
 versionsGradlePlugin = "0.50.0"
 
 [plugins]
