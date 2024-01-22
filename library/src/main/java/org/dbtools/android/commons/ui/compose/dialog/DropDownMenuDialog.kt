@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,12 +21,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import org.dbtools.android.commons.ui.compose.DayNightTextField
+import org.dbtools.android.commons.ui.compose.LibraryTheme
+import org.dbtools.android.commons.ui.compose.PreviewLibraryDefault
 
 @Composable
 fun <T> DropDownMenuDialog(
@@ -176,11 +176,10 @@ data class DropDownMenuDialogUiState<T>(
     override val onDismissRequest: () -> Unit = {}
 ) : DialogUiState<T>
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun Preview() {
-    MaterialTheme {
+    LibraryTheme {
         DropDownMenuDialog(
             onDismissRequest = {},
             title = "Title",

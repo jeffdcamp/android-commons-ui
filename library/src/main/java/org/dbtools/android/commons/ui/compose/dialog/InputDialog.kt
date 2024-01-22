@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
-import android.content.res.Configuration
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,13 +32,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import kotlinx.coroutines.delay
 import org.dbtools.android.commons.ui.compose.DayNightTextField
+import org.dbtools.android.commons.ui.compose.LibraryTheme
+import org.dbtools.android.commons.ui.compose.PreviewLibraryDefault
 
 @Composable
 fun InputDialog(
@@ -422,11 +422,10 @@ data class TwoInputDialogUiState(
     override val onDismissRequest: () -> Unit = {},
 ) : DialogUiState<Pair<String, String>>
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun PreviewInputDialog() {
-    MaterialTheme {
+    LibraryTheme {
         InputDialog(
             onDismissRequest = {},
             title = "Title",
@@ -440,11 +439,10 @@ private fun PreviewInputDialog() {
     }
 }
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun PreviewTwoInputDialog() {
-    MaterialTheme {
+    LibraryTheme {
         TwoInputDialog(
             onDismissRequest = {},
             title = "Title",

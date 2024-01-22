@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
-import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,11 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import org.dbtools.android.commons.ui.compose.LibraryTheme
+import org.dbtools.android.commons.ui.compose.PreviewLibraryDefault
 
 @Composable
 fun MenuOptionsDialog(
@@ -99,12 +99,10 @@ data class MenuOptionsDialogUiState(
     override val onDismissRequest: () -> Unit = {}
 ) : DialogUiState<String>
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-
+@PreviewLibraryDefault
 @Composable
 private fun Preview() {
-    MaterialTheme {
+    LibraryTheme {
         MenuOptionsDialog(
             onDismissRequest = {},
             title = "Options",

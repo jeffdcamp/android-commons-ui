@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose.dialog
 
-import android.content.res.Configuration
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.AlertDialog
@@ -11,8 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import org.dbtools.android.commons.ui.compose.LibraryTheme
+import org.dbtools.android.commons.ui.compose.PreviewLibraryDefault
 
 @Composable
 fun MessageDialog(
@@ -96,11 +96,10 @@ data class MessageDialogUiState(
     override val onDismissRequest: () -> Unit = {},
 ) : DialogUiState<Unit>
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun PreviewMessageDialog() {
-    MaterialTheme {
+    LibraryTheme {
         MessageDialog(
             title = "Title",
             text = "This is the content that goes in the text",
@@ -111,11 +110,10 @@ private fun PreviewMessageDialog() {
     }
 }
 
-@Preview(group = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun PreviewMessageDialogWithIcon() {
-    MaterialTheme {
+    LibraryTheme {
         MessageDialog(
             title = "Title",
             text = "This is the content that goes in the text",

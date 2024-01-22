@@ -1,6 +1,5 @@
 package org.dbtools.android.commons.ui.compose
 
-import android.content.res.Configuration
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +9,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,7 +30,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import org.dbtools.android.commons.ui.R
 import org.dbtools.android.commons.ui.compose.icons.google.filled.Visibility
 import org.dbtools.android.commons.ui.compose.icons.google.filled.VisibilityOff
@@ -139,11 +136,10 @@ fun DayNightPasswordTextField(
     )
 }
 
-@Preview(group = "light", uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
-@Preview(group = "dark", uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL, showBackground = true)
+@PreviewLibraryDefault
 @Composable
 private fun Preview() {
-    MaterialTheme {
+    LibraryTheme {
         Surface {
             DayNightPasswordTextField(
                 value = "",
