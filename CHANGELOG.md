@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-rc01] - 2024-01-29
+
+### Added
+
+- Added support for Custom AppBarMenuItem
+
+### Changed
+
+- Compose M3 1.2.0-rc01 / ComposeUi 1.6.0 / Other version updates
+- Fixed scrolling issues with RadioDialog and MenuOptionsDialog
+- Added padding for OverflowMenuItemsContent text
+- Improvements for Compose previews in Library
+
 ## [1.9.0-beta02] - 2024-01-11
 
 ### Changed
