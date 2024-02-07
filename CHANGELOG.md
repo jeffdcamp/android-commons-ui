@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0] - 2024-02-07
+
+### Added
+
+- Added Modifier.semantics { heading() } to AppBarTitle
+- Added OverflowMenuItemCustom to allow custom leadingContent/trailingContent
+
+### Changed
+
+- Compose M3 1.2.0 / ComposeUi 1.6.1 / Other version updates
+
+
 ## [1.9.0-rc01] - 2024-01-29
 
 ### Added
