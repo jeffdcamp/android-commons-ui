@@ -165,7 +165,7 @@ fun AppBarOverflowMenu(menuItems: List<AppBarMenuItem>) {
 }
 
 sealed interface AppBarMenuItem {
-    class Icon(val imageVector: ImageVector, val text: @Composable () -> String, val action: () -> Unit) : AppBarMenuItem{
+    class Icon(val imageVector: ImageVector, val text: @Composable () -> String, val action: () -> Unit) : AppBarMenuItem {
         constructor(imageVector: ImageVector, @StringRes textId: Int, action: () -> Unit) : this(imageVector = imageVector, text = { stringResource(textId) }, action = action)
     }
 
@@ -175,6 +175,7 @@ sealed interface AppBarMenuItem {
     class Text(val text: @Composable () -> String, val colors: ButtonColors? = null, val action: () -> Unit) : AppBarMenuItem {
         constructor(@StringRes textId: Int, colors: ButtonColors? = null, action: () -> Unit) : this(text = { stringResource(textId) }, colors = colors, action = action)
     }
+
     /**
      * If setting colors, consider using ButtonDefaults.buttonColors(contentColor = LocalContentColor.current)
      */
@@ -194,6 +195,20 @@ sealed interface AppBarMenuItem {
             text = { stringResource(textId) },
             leadingIcon = leadingIcon,
             trailingIcon = trailingIcon,
+            action = action
+        )
+    }
+
+    class OverflowMenuItemCustom(
+        override val text: @Composable () -> String,
+        override val leadingContent: (@Composable () -> String)? = null,
+        override val trailingContent: (@Composable () -> String)? = null,
+        override val action: () -> Unit
+    ) : AppBarMenuItem, org.dbtools.android.commons.ui.compose.menu.OverflowMenuItem.MenuItemCustom(text, leadingContent, trailingContent, action) {
+        constructor(@StringRes textId: Int, leadingContent: (@Composable () -> String)? = null, trailingContent: (@Composable () -> String)? = null, action: () -> Unit) : this(
+            text = { stringResource(textId) },
+            leadingContent = leadingContent,
+            trailingContent = trailingContent,
             action = action
         )
     }
