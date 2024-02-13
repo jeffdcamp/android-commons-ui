@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Changed OverflowMenuItemCustom and OverflowMenuItem.MenuItemCustom to have leadingContent and trailingContent return Unit
+
 ## [1.9.0] - 2024-02-07
 
 ### Added
