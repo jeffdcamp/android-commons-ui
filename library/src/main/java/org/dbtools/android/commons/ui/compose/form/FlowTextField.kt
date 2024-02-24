@@ -1,5 +1,7 @@
 package org.dbtools.android.commons.ui.compose.form
 
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,6 +22,8 @@ fun FlowTextField(
     onChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     errorTextFlow: StateFlow<String?> = MutableStateFlow(null),
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
 ) {
     val text by textFlow.collectAsStateWithLifecycle()
     val errorText by errorTextFlow.collectAsStateWithLifecycle()
@@ -32,6 +36,8 @@ fun FlowTextField(
         singleLine = true,
         isError = !errorText.isNullOrBlank(),
         supportingText = errorText?.let{ { Text(it) } },
+        keyboardOptions = keyboardOptions,
+        keyboardActions = keyboardActions,
         modifier = modifier
             .onPreviewKeyEvent { formKeyEventHandler(it, focusManager) }
     )
