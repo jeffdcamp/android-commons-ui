@@ -31,11 +31,11 @@ android {
         jvmTarget = "17"
         freeCompilerArgs = listOf(
             "-module-name", Pom.LIBRARY_ARTIFACT_ID,
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xopt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi",
-            "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi",
-            "-Xopt-in=androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
+            "-opt-in=kotlin.RequiresOptIn",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+            "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+            "-opt-in=androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
         )
     }
 
@@ -81,6 +81,9 @@ dependencies {
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
+
+    // Media
+    api(libs.androidx.media3.exoplayer)
 
     // Code
     implementation(libs.kotlin.coroutines.core)
