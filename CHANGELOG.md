@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added MediaDownloadUtil, MediaDownloadIconButton for working with downloads with Media3
+
 ### Changed
 
 - Changed OverflowMenuItemCustom and OverflowMenuItem.MenuItemCustom to have leadingContent and trailingContent return Unit
+- Added keyboardOptions, keyboardActions to FlowTextField
+
+### Removed
+
+- Removed AppNavigation code (use Compose Navigation Suite instead)  
 
 ## [1.9.0] - 2024-02-07
 
