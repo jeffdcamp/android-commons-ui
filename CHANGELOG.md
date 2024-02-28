@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Prevent crash when trying to navigate to an Intent that can't be handled
+
+## [1.10.0] - 2024-02-26
+
 ### Added
 
 - Added MediaDownloadUtil, MediaDownloadIconButton for working with downloads with Media3
