@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1] - 2024-02-29
+
 ### Changed
 
 - Prevent crash when trying to navigate to an Intent that can't be handled
+- Improved label formatting on TextWithTitle
 
 ## [1.10.0] - 2024-02-26
 
