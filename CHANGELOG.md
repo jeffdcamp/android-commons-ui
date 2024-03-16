@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.0] - 2024-03-16
+
+### Changed
+
+- Changed MultiSelectDialogUiState to have Checkbox before Text
+- Changed DropdownMenuBoxField to allow selectedOptionFlow to be nullable
+- Improved dependencies (Changed all plugins to alias)
+
 ## [1.10.1] - 2024-02-29
 
 ### Changed
