@@ -1,29 +1,14 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
-buildscript {
-    repositories {
-        mavenLocal()
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath(libs.android.gradlePluginClasspath)
-        classpath(libs.kotlin.gradlePluginClasspath)
-        classpath(libs.gradleVersions.gradlePluginClasspath)
-    }
-}
-
 plugins {
-    id("com.autonomousapps.dependency-analysis") version "1.28.0"
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.versions)
+    alias(libs.plugins.dependencyAnalysis)
 }
 
 allprojects {
-    repositories {
-        mavenLocal()
-        google()
-        mavenCentral()
-    }
     // Gradle Dependency Check
     apply(plugin = "com.github.ben-manes.versions") // ./gradlew dependencyUpdates -Drevision=release
     val excludeVersionContaining = listOf("alpha", "eap", "dev") // example: "alpha", "beta"
