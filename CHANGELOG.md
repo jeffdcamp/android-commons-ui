@@ -7,12 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.12.0] - 2024-05-01
+## [1.12.0] - 2024-05-25
 
 ### Changed
 
 - Improved spacing on MenuOptionsDialog items
-- Updated versions
+- Compose fixes for Compose M3 1.3.0-beta01
+- Kotlin 2.0.0
+- Compose M3 1.3.0-beta01 / Compose UI 1.7.0-beta01
+- Compose Navigation 2.8.0-beta01
 
 ## [1.11.0] - 2024-03-16
 
