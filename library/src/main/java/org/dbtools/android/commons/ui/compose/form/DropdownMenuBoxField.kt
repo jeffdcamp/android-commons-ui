@@ -5,6 +5,7 @@ package org.dbtools.android.commons.ui.compose.form
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -68,7 +69,7 @@ fun <T> DropdownMenuBoxField(
     ) {
         DayNightTextField(
             readOnly = true,
-            value = selectedOption?.let { optionToText(it) } ?: "",
+            value = selectedOption?.let { optionToText(it) }.orEmpty(),
             onValueChange = {},
             label = if (label != null) { { Text(text = label) } } else null,
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
@@ -77,7 +78,7 @@ fun <T> DropdownMenuBoxField(
             modifier = modifier
                 // As of Material3 1.0.0-beta03; The `menuAnchor` modifier must be passed to the text field for correctness.
                 // (https://android-review.googlesource.com/c/platform/frameworks/support/+/2200861)
-                .menuAnchor()
+                .menuAnchor(MenuAnchorType.PrimaryNotEditable)
         )
         ExposedDropdownMenu(
             expanded = expanded,

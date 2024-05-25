@@ -4,6 +4,7 @@ import com.android.build.gradle.tasks.GenerateBuildConfig
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.download)
     alias(libs.plugins.detekt)
@@ -41,10 +42,6 @@ android {
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get().toString()
     }
 
     lint {

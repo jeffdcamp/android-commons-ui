@@ -11,12 +11,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -50,7 +50,7 @@ fun SmallTextButton(
                 .border(border ?: BorderStroke(0.dp, Color.Transparent), shape)
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = rememberRipple(),
+                    indication = ripple(),
                     enabled = enabled,
                     onClick = onClick
                 ),
