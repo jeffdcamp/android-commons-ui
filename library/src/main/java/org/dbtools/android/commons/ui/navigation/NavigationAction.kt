@@ -32,19 +32,19 @@ sealed interface NavigationActionFull : NavigationAction {
 
 
 sealed interface NavigationAction {
-    data class Navigate(private val route: NavRoute) : NavigationActionRoute {
+    data class Navigate(private val typeSafeRoute: Any) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
-            navController.navigate(route.value)
+            navController.navigate(typeSafeRoute)
 
             resetNavigate(this)
             return false
         }
     }
 
-    data class NavigateMultiple(private val routes: List<NavRoute>) : NavigationActionRoute {
+    data class NavigateMultiple(val typeSafeRoutes: List<Any>) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
-            routes.forEach { route ->
-                navController.navigate(route.value)
+            typeSafeRoutes.forEach { route ->
+                navController.navigate(route)
             }
 
             resetNavigate(this)
@@ -52,9 +52,9 @@ sealed interface NavigationAction {
         }
     }
 
-    data class NavigateWithOptions(private val route: NavRoute, private val navOptions: NavOptions) : NavigationActionRoute {
+    data class NavigateWithOptions(val typeSafeRoute: Any, val navOptions: NavOptions) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
-            navController.navigate(route.value, navOptions)
+            navController.navigate(typeSafeRoute, navOptions)
 
             resetNavigate(this)
             return false
@@ -73,10 +73,10 @@ sealed interface NavigationAction {
         }
     }
 
-    data class PopAndNavigate(private val route: NavRoute) : NavigationActionRoute {
+    data class PopAndNavigate(private val typeSafeRoute: Any) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
             val stackPopped = navController.popBackStack()
-            navController.navigate(route.value)
+            navController.navigate(typeSafeRoute)
 
             resetNavigate(this)
             return stackPopped
@@ -96,12 +96,12 @@ sealed interface NavigationAction {
         }
     }
 
-    data class Pop(private val popToRouteDefinition: NavRouteDefinition? = null, private val inclusive: Boolean = false) : NavigationActionRoute {
+    data class Pop(private val typeSafeRoute: Any? = null, private val inclusive: Boolean = false) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
-            val stackPopped = if (popToRouteDefinition == null) {
+            val stackPopped = if (typeSafeRoute == null) {
                 navController.popBackStack()
             } else {
-                navController.popBackStack(popToRouteDefinition.value, inclusive = inclusive)
+                navController.popBackStack(typeSafeRoute, inclusive = inclusive)
             }
 
             resetNavigate(this)
@@ -111,20 +111,20 @@ sealed interface NavigationAction {
 
     data class PopWithResult(
         private val resultValues: List<PopResultKeyValue>,
-        private val popToRouteDefinition: NavRouteDefinition? = null,
+        private val typeSafeRoute: Any? = null,
         private val inclusive: Boolean = false,
     ) : NavigationActionRoute {
         override fun navigate(navController: NavController, resetNavigate: (NavigationAction) -> Unit): Boolean {
-            val destinationNavBackStackEntry = if (popToRouteDefinition != null) {
-                navController.getBackStackEntry(popToRouteDefinition.value)
+            val destinationNavBackStackEntry = if (typeSafeRoute != null) {
+                navController.getBackStackEntry(typeSafeRoute)
             } else {
                 navController.previousBackStackEntry
             }
             resultValues.forEach { destinationNavBackStackEntry?.savedStateHandle?.set(it.key, it.value) }
-            val stackPopped = if (popToRouteDefinition == null) {
+            val stackPopped = if (typeSafeRoute == null) {
                 navController.popBackStack()
             } else {
-                navController.popBackStack(popToRouteDefinition.value, inclusive = inclusive)
+                navController.popBackStack(typeSafeRoute, inclusive = inclusive)
             }
 
             resetNavigate(this)

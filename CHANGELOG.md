@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-beta01] - 2024-05-25
+
+### Changed
+
+- Changed NavigationAction, ViewModelNav, ViewModelNavBar to support Type Safe Navigation (navigation-compose 1.3.0-beta01)
+- Added RadioButtonTextItem
+
+### Removed
+
+- Removed NavComposeRoute, NavRoute, SavedStateHandleExt
+
 ## [1.12.0] - 2024-05-25
 
 ### Changed
