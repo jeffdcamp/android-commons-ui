@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-beta02] - 2024-06-04
+
+### Changed
+
+- Compose UI 1.7.0-beta02
+- Navigation Compose 1.3.0-beta02
+
+### Added 
+
+- Added Type Safety to NavigationAction and ViewModelNav using interface NavRoute
+- Added ListItemExt.transparentContainer() function extension
+
+### Removed
+
+- Removed NavComposeRoute, NavRoute, SavedStateHandleExt
+
+
 ## [2.0.0-beta01] - 2024-05-25
 
 ### Changed
