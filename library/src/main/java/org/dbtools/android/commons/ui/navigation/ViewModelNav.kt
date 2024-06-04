@@ -20,12 +20,12 @@ import kotlinx.coroutines.flow.asStateFlow
 interface ViewModelNav {
     val navigationActionFlow: StateFlow<NavigationAction?>
 
-    fun navigate(typeSafeRoute: Any, popBackStack: Boolean = false)
-    fun navigate(typeSafeRoutes: List<Any>)
-    fun navigate(typeSafeRoute: Any, navOptions: NavOptions)
-    fun navigate(typeSafeRoute: Any, optionsBuilder: NavOptionsBuilder.() -> Unit)
-    fun popBackStack(typeSafeRoute: Any? = null, inclusive: Boolean = false)
-    fun popBackStackWithResult(resultValues: List<PopResultKeyValue>, typeSafeRoute: Any? = null, inclusive: Boolean = false)
+    fun navigate(route: NavRoute, popBackStack: Boolean = false)
+    fun navigate(routes: List<NavRoute>)
+    fun navigate(route: NavRoute, navOptions: NavOptions)
+    fun navigate(route: NavRoute, optionsBuilder: NavOptionsBuilder.() -> Unit)
+    fun popBackStack(route: NavRoute? = null, inclusive: Boolean = false)
+    fun popBackStackWithResult(resultValues: List<PopResultKeyValue>, route: NavRoute? = null, inclusive: Boolean = false)
 
     fun navigate(intent: Intent, options: Bundle? = null, popBackStack: Boolean = false)
 
@@ -37,28 +37,28 @@ class ViewModelNavImpl : ViewModelNav {
     private val _navigatorFlow = MutableStateFlow<NavigationAction?>(null)
     override val navigationActionFlow: StateFlow<NavigationAction?> = _navigatorFlow.asStateFlow()
 
-    override fun navigate(typeSafeRoute: Any, popBackStack: Boolean) {
-        _navigatorFlow.compareAndSet(null, if (popBackStack) NavigationAction.PopAndNavigate(typeSafeRoute) else NavigationAction.Navigate(typeSafeRoute))
+    override fun navigate(route: NavRoute, popBackStack: Boolean) {
+        _navigatorFlow.compareAndSet(null, if (popBackStack) NavigationAction.PopAndNavigate(route) else NavigationAction.Navigate(route))
     }
 
-    override fun navigate(typeSafeRoutes: List<Any>) {
-        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateMultiple(typeSafeRoutes))
+    override fun navigate(routes: List<NavRoute>) {
+        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateMultiple(routes))
     }
 
-    override fun navigate(typeSafeRoute: Any, navOptions: NavOptions) {
-        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateWithOptions(typeSafeRoute, navOptions))
+    override fun navigate(route: NavRoute, navOptions: NavOptions) {
+        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateWithOptions(route, navOptions))
     }
 
-    override fun navigate(typeSafeRoute: Any, optionsBuilder: NavOptionsBuilder.() -> Unit) {
-        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateWithOptions(typeSafeRoute, navOptions(optionsBuilder)))
+    override fun navigate(route: NavRoute, optionsBuilder: NavOptionsBuilder.() -> Unit) {
+        _navigatorFlow.compareAndSet(null, NavigationAction.NavigateWithOptions(route, navOptions(optionsBuilder)))
     }
 
-    override fun popBackStack(typeSafeRoute: Any?, inclusive: Boolean) {
-        _navigatorFlow.compareAndSet(null, NavigationAction.Pop(typeSafeRoute, inclusive))
+    override fun popBackStack(route: NavRoute?, inclusive: Boolean) {
+        _navigatorFlow.compareAndSet(null, NavigationAction.Pop(route, inclusive))
     }
 
-    override fun popBackStackWithResult(resultValues: List<PopResultKeyValue>, typeSafeRoute: Any?, inclusive: Boolean) {
-        _navigatorFlow.compareAndSet(null, NavigationAction.PopWithResult(resultValues, typeSafeRoute, inclusive))
+    override fun popBackStackWithResult(resultValues: List<PopResultKeyValue>, route: NavRoute?, inclusive: Boolean) {
+        _navigatorFlow.compareAndSet(null, NavigationAction.PopWithResult(resultValues, route, inclusive))
     }
 
     override fun navigate(intent: Intent, options: Bundle?, popBackStack: Boolean) {

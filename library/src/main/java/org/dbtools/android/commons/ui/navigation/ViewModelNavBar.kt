@@ -25,13 +25,13 @@ interface ViewModelNavBar<T : Enum<T>> {
     val navigatorFlow: StateFlow<ViewModelNavBarNavigator?>
     val selectedNavBarFlow: StateFlow<T?>
 
-    fun navigate(typeSafeRoute: Any, popBackStack: Boolean = false)
-    fun navigate(typeSafeRoutes: List<Any>)
-    fun navigate(typeSafeRoute: Any, navOptions: NavOptions)
-    fun navigate(typeSafeRoute: Any, optionsBuilder: NavOptionsBuilder.() -> Unit)
+    fun navigate(route: NavRoute, popBackStack: Boolean = false)
+    fun navigate(routes: List<NavRoute>)
+    fun navigate(route: NavRoute, navOptions: NavOptions)
+    fun navigate(route: NavRoute, optionsBuilder: NavOptionsBuilder.() -> Unit)
     fun navigate(intent: Intent, options: Bundle? = null)
-    fun onNavBarItemSelected(selectedItem: T, typeSafeRoute: Any? = null)
-    fun navBarNavigation(typeSafeRoute: Any, reselected: Boolean)
+    fun onNavBarItemSelected(selectedItem: T, route: NavRoute? = null)
+    fun navBarNavigation(route: NavRoute, reselected: Boolean)
     fun resetNavigate(viewModelNavBarNavigator: ViewModelNavBarNavigator)
 }
 
@@ -45,36 +45,36 @@ class ViewModelNavBarImpl<T : Enum<T>>(
     private val _selectedNavBarFlow = MutableStateFlow<T?>(startNavBarItem)
     override val selectedNavBarFlow: StateFlow<T?> = _selectedNavBarFlow.asStateFlow()
 
-    override fun navigate(typeSafeRoute: Any, popBackStack: Boolean) {
-        _navigatorFlow.compareAndSet(null, if (popBackStack) ViewModelNavBarNavigator.PopAndNavigate(typeSafeRoute) else ViewModelNavBarNavigator.Navigate(typeSafeRoute))
+    override fun navigate(route: NavRoute, popBackStack: Boolean) {
+        _navigatorFlow.compareAndSet(null, if (popBackStack) ViewModelNavBarNavigator.PopAndNavigate(route) else ViewModelNavBarNavigator.Navigate(route))
     }
 
-    override fun navigate(typeSafeRoutes: List<Any>) {
-        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateMultiple(typeSafeRoutes))
+    override fun navigate(routes: List<NavRoute>) {
+        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateMultiple(routes))
     }
 
-    override fun navigate(typeSafeRoute: Any, navOptions: NavOptions) {
-        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateWithOptions(typeSafeRoute, navOptions))
+    override fun navigate(route: NavRoute, navOptions: NavOptions) {
+        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateWithOptions(route, navOptions))
     }
 
-    override fun navigate(typeSafeRoute: Any, optionsBuilder: NavOptionsBuilder.() -> Unit) {
-        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateWithOptions(typeSafeRoute, navOptions(optionsBuilder)))
+    override fun navigate(route: NavRoute, optionsBuilder: NavOptionsBuilder.() -> Unit) {
+        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateWithOptions(route, navOptions(optionsBuilder)))
     }
 
     override fun navigate(intent: Intent, options: Bundle?) {
         _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavigateIntent(intent, options))
     }
 
-    override fun navBarNavigation(typeSafeRoute: Any, reselected: Boolean) {
-        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavBarNavigate(typeSafeRoute, reselected))
+    override fun navBarNavigation(route: NavRoute, reselected: Boolean) {
+        _navigatorFlow.compareAndSet(null, ViewModelNavBarNavigator.NavBarNavigate(route, reselected))
     }
 
     override fun resetNavigate(viewModelNavBarNavigator: ViewModelNavBarNavigator) {
         _navigatorFlow.compareAndSet(viewModelNavBarNavigator, null)
     }
 
-    override fun onNavBarItemSelected(selectedItem: T, typeSafeRoute: Any?) {
-        val navRoute = typeSafeRoute ?: navBarConfig?.getRouteByNavItem(selectedItem)
+    override fun onNavBarItemSelected(selectedItem: T, route: NavRoute?) {
+        val navRoute = route ?: navBarConfig?.getRouteByNavItem(selectedItem)
 
         if (navRoute != null) {
             val reselected = _selectedNavBarFlow.value == selectedItem
@@ -89,14 +89,14 @@ class ViewModelNavBarImpl<T : Enum<T>>(
 sealed class ViewModelNavBarNavigator {
     abstract fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean
 
-    class NavBarNavigate(private val typeSafeRoute: Any, private val reselected: Boolean) : ViewModelNavBarNavigator() {
+    class NavBarNavigate(private val route: NavRoute, private val reselected: Boolean) : ViewModelNavBarNavigator() {
         override fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean {
             if (reselected) {
                 // clear back stack
-                navController.popBackStack(typeSafeRoute, inclusive = false)
+                navController.popBackStack(route, inclusive = false)
             }
 
-            navController.navigate(typeSafeRoute) {
+            navController.navigate(route) {
                 // Avoid multiple copies of the same destination when reselecting the same item
                 launchSingleTop = true
                 // Restore state when reselecting a previously selected item
@@ -113,19 +113,19 @@ sealed class ViewModelNavBarNavigator {
         }
     }
 
-    class Navigate(private val typeSafeRoute: Any) : ViewModelNavBarNavigator() {
+    class Navigate(private val route: NavRoute) : ViewModelNavBarNavigator() {
         override fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean {
-            navController.navigate(typeSafeRoute)
+            navController.navigate(route)
 
             viewModelNav.resetNavigate(this)
             return false
         }
     }
 
-    class NavigateMultiple(private val typeSafeRoutes: List<Any>) : ViewModelNavBarNavigator() {
+    class NavigateMultiple(private val routes: List<NavRoute>) : ViewModelNavBarNavigator() {
         override fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean {
-            typeSafeRoutes.forEach { typeSafeRoute ->
-                navController.navigate(typeSafeRoute)
+            routes.forEach { route ->
+                navController.navigate(route)
             }
 
             viewModelNav.resetNavigate(this)
@@ -133,9 +133,9 @@ sealed class ViewModelNavBarNavigator {
         }
     }
 
-    class NavigateWithOptions(private val typeSafeRoute: Any, private val navOptions: NavOptions) : ViewModelNavBarNavigator() {
+    class NavigateWithOptions(private val route: NavRoute, private val navOptions: NavOptions) : ViewModelNavBarNavigator() {
         override fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean {
-            navController.navigate(typeSafeRoute, navOptions)
+            navController.navigate(route, navOptions)
 
             viewModelNav.resetNavigate(this)
             return false
@@ -154,10 +154,10 @@ sealed class ViewModelNavBarNavigator {
         }
     }
 
-    class PopAndNavigate(private val typeSafeRoute: Any) : ViewModelNavBarNavigator() {
+    class PopAndNavigate(private val route: NavRoute) : ViewModelNavBarNavigator() {
         override fun <T : Enum<T>> navigate(context: Context, navController: NavController, viewModelNav: ViewModelNavBar<T>): Boolean {
             val stackPopped = navController.popBackStack()
-            navController.navigate(typeSafeRoute)
+            navController.navigate(route)
 
             viewModelNav.resetNavigate(this)
             return stackPopped
@@ -166,13 +166,13 @@ sealed class ViewModelNavBarNavigator {
 }
 
 interface NavBarConfig<T : Enum<T>> {
-    fun getRouteByNavItem(navBarItem: T): Any?
+    fun getRouteByNavItem(navBarItem: T): NavRoute?
 }
 
 class DefaultNavBarConfig<T : Enum<T>>(
-    private val navBarItemRouteMap: Map<T, Any>,
+    private val navBarItemRouteMap: Map<T, NavRoute>,
 ) : NavBarConfig<T> {
-    override fun getRouteByNavItem(navBarItem: T): Any? = navBarItemRouteMap[navBarItem]
+    override fun getRouteByNavItem(navBarItem: T): NavRoute? = navBarItemRouteMap[navBarItem]
 }
 
 @Composable
