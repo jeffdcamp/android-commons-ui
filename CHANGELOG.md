@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-beta03] - 2024-06-12
+
+### Changed
+
+- Renamed navigation classes from NavXxxx -> NavigationXxxx
+- Compose UI 1.7.0-beta03
+- Navigation Compose 1.3.0-beta03
+
 ## [2.0.0-beta02] - 2024-06-04
 
 ### Changed
