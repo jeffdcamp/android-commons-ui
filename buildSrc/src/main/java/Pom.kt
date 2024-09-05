@@ -1,12 +1,12 @@
 object AndroidSdk {
     const val MIN = 21
-    const val COMPILE = 34
+    const val COMPILE = 35
     const val TARGET = COMPILE
 }
 
 object Pom {
     const val GROUP_ID = "org.dbtools"
-    const val VERSION_NAME = "2.0.0-beta03"
+    const val VERSION_NAME = "2.0.0"
     const val POM_DESCRIPTION = "Android Commons UI"
 
     const val URL = "https://github.com/jeffdcamp/android-commons-ui/"

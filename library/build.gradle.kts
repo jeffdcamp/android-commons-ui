@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.download)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.dependencyAnalysis)
     `maven-publish`
     signing
 }
@@ -77,7 +78,7 @@ dependencies {
     implementation(libs.compose.material3.windowsize)
 
     // Navigation
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime)
 
     // Media
     api(libs.androidx.media3.exoplayer)
@@ -90,7 +91,7 @@ dependencies {
     implementation(libs.kermit)
 
     // Image
-    implementation(libs.coil)
+    implementation(libs.coil.base)
 
     // Test (Unit)
     testImplementation(libs.junit.jupiter)
