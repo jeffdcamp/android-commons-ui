@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-09-14
+
+### Changed
+
+- Renamed Clicked() -> Click()
+- Compose UI 1.7.1
+- Navigation Compose 1.3.0
+
+
 ## [2.0.0] - 2024-09-05
 
 ### Added

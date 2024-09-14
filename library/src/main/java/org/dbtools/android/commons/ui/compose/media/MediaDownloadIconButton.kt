@@ -23,8 +23,8 @@ fun MediaDownloadIconButton(
     downloadContentDescription: String?,
     downloadedImageVector: ImageVector,
     downloadedContentDescription: String?,
-    onDownloadClicked: () -> Unit,
-    onCancelDownloadClicked: () -> Unit,
+    onDownloadClick: () -> Unit,
+    onCancelDownloadClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val mediaDownloadState by mediaDownloadStateFlow.collectAsStateWithLifecycle()
@@ -40,11 +40,11 @@ fun MediaDownloadIconButton(
                         .size(24.dp)
                         .align(Alignment.Center)
                         .clickable {
-                            onCancelDownloadClicked()
+                            onCancelDownloadClick()
                         }
                 )
-            false -> IconButton(onClick = { onDownloadClicked() }) { Icon(downloadImageVector, downloadContentDescription) }
-            else -> IconButton(onClick = { onDownloadClicked() }) { Icon(downloadedImageVector, downloadedContentDescription) }
+            false -> IconButton(onClick = { onDownloadClick() }) { Icon(downloadImageVector, downloadContentDescription) }
+            else -> IconButton(onClick = { onDownloadClick() }) { Icon(downloadedImageVector, downloadedContentDescription) }
         }
     }
 }
