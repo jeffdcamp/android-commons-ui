@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2024-10-09
+
+### Added
+
+- Added CheckboxField
+
+### Changed
+
+- Compose UI 1.7.3
+
 ## [2.1.0] - 2024-09-14
 
 ### Changed
