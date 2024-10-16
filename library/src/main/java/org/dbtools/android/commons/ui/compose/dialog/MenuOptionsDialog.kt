@@ -48,30 +48,38 @@ fun MenuOptionsDialog(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
             ) {
-                // Title
-                if (title != null) {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
-                    )
+                Column(
+                ) {
+                    // Title
+                    if (title != null) {
+                        Text(
+                            text = title,
+                            style = MaterialTheme.typography.headlineSmall,
+                            modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                        )
+
+                    }
+
+                    // Supporting Text
+                    if (supportingText != null) {
+                        Text(
+                            text = supportingText,
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(8.dp))
                 }
 
-                // Supporting Text
-                if (supportingText != null) {
-                    Text(
-                        text = supportingText,
-                        modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                }
 
                 // Options
                 options.forEach { menuOptionsDialogItem: MenuOptionsDialogItem ->
                     ListItem(
+                        leadingContent = menuOptionsDialogItem.leadingContent,
                         headlineContent = { Text(menuOptionsDialogItem.text()) },
+                        supportingContent = menuOptionsDialogItem.supportingContent,
+                        trailingContent = menuOptionsDialogItem.trailingContent,
                         modifier = Modifier
                             .clickable { menuOptionsDialogItem.onClick() }
                     )
@@ -83,7 +91,13 @@ fun MenuOptionsDialog(
     }
 }
 
-data class MenuOptionsDialogItem(val text: @Composable () -> String, val onClick: () -> Unit)
+data class MenuOptionsDialogItem(
+    val text: @Composable () -> String,
+    val supportingContent: @Composable (() -> Unit)? = null,
+    val leadingContent: @Composable (() -> Unit)? = null,
+    val trailingContent: @Composable (() -> Unit)? = null,
+    val onClick: () -> Unit
+)
 
 @Composable
 fun MenuOptionsDialog(

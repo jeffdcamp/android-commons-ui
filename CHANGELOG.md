@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.1] - 2024-10-16
+
+### Added
+
+- Added supportingContent, leadingContent, trailingContent to MenuOptionsDialogItem
+
+### Changed
+
+- Fixed spacing for supporting text MenuOptionsDialog
+
 ## [2.2.0] - 2024-10-09
 
 ### Added
