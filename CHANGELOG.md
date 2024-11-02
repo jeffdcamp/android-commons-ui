@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.2] - 2024-11-01
+
+### Changed
+
+- Improved navigation logging
+- Updated versions
+
 ## [2.2.1] - 2024-10-16
 
 ### Added
