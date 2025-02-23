@@ -21,12 +21,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ImageScrim(
     modifier: Modifier = Modifier,
-    alpha: Float = 0.15f
+    alpha: Float = 0.15f,
+    color: Color = Color.Black
 ) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = alpha))
+            .background(color.copy(alpha = alpha))
     )
 }
 
@@ -34,14 +35,15 @@ fun ImageScrim(
 fun BoxScope.ImageScrimTopDown(
     modifier: Modifier = Modifier,
     alpha: Float = 0.15f,
-    height: Dp = 100.dp
+    height: Dp = 100.dp,
+    color: Color = Color.Black
 ) {
     Box(
         modifier = modifier
             .height(height)
             .fillMaxWidth()
             .align(Alignment.TopCenter)
-            .background(brush = Brush.verticalGradient(colors = listOf(Color.Black.copy(alpha = alpha), Color.Transparent)))
+            .background(brush = Brush.verticalGradient(colors = listOf(color.copy(alpha = alpha), Color.Transparent)))
     )
 }
 
@@ -49,14 +51,15 @@ fun BoxScope.ImageScrimTopDown(
 fun BoxScope.ImageScrimBottomUp(
     modifier: Modifier = Modifier,
     alpha: Float = 0.15f,
-    height: Dp = 100.dp
+    height: Dp = 100.dp,
+    color: Color = Color.Black
 ) {
     Box(
         modifier = modifier
             .height(height)
             .fillMaxWidth()
             .align(Alignment.BottomCenter)
-            .background(brush = Brush.verticalGradient(colors = listOf(Color.Transparent, Color.Black.copy(alpha = alpha))))
+            .background(brush = Brush.verticalGradient(colors = listOf(Color.Transparent, color.copy(alpha = alpha))))
     )
 }
 
@@ -64,14 +67,15 @@ fun BoxScope.ImageScrimBottomUp(
 fun BoxScope.ImageScrimStartEnd(
     modifier: Modifier = Modifier,
     alpha: Float = 0.15f,
-    width: Dp = 100.dp
+    width: Dp = 100.dp,
+    color: Color = Color.Black
 ) {
     Box(
         modifier = modifier
             .width(width)
             .fillMaxHeight()
             .align(Alignment.CenterStart)
-            .background(brush = Brush.horizontalGradient(colors = listOf(Color.Black.copy(alpha = alpha), Color.Transparent)))
+            .background(brush = Brush.horizontalGradient(colors = listOf(color.copy(alpha = alpha), Color.Transparent)))
     )
 }
 
@@ -79,13 +83,14 @@ fun BoxScope.ImageScrimStartEnd(
 fun BoxScope.ImageScrimEndStart(
     modifier: Modifier = Modifier,
     alpha: Float = 0.15f,
-    width: Dp = 100.dp
+    width: Dp = 100.dp,
+    color: Color = Color.Black
 ) {
     Box(
         modifier = modifier
             .width(width)
             .fillMaxHeight()
             .align(Alignment.CenterEnd)
-            .background(brush = Brush.horizontalGradient(colors = listOf(Color.Transparent, Color.Black.copy(alpha = alpha))))
+            .background(brush = Brush.horizontalGradient(colors = listOf(Color.Transparent, color.copy(alpha = alpha))))
     )
 }
