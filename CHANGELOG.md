@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2025-02-22
+
+### Changed
+
+- Added backgroundColor to ListItemTextHeader
+- Added color to ImageScrim
+- Updated versions
+
+
 ## [2.2.2] - 2024-11-01
 
 ### Changed
