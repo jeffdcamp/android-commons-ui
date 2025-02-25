@@ -1,6 +1,6 @@
 [versions]
 agp = "8.8.1"
-kotlin = "2.0.21"
+kotlin = "2.1.10"
 kotlinxCoroutines = "1.10.1"
 kotlinxDateTime = "0.6.2"
 
@@ -12,8 +12,8 @@ androidxNavigation = "2.8.7"
 androidxMedia3 = "1.5.1"
 assertk = "0.28.1"
 coil = "2.7.0"
-dependencyAnalysis = "2.4.2"
-desugarJdkLibs = "2.1.4"
+dependencyAnalysis = "2.10.1"
+desugarJdkLibs = "2.1.5"
 detekt = "1.23.8"
 downloadPlugin = "5.6.0"
 
@@ -21,7 +21,7 @@ junit = "5.11.3"
 kermit = "2.0.5"
 
 mockK = "1.13.16"
-versionsPlugin = "0.51.0"
+versionsPlugin = "0.52.0"
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }
