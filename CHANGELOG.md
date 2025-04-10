@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.0] - 2025-04-10
+
+### Changed
+
+- Android SDK 36
+- Improved Navigation Action to support direct calls to the NavController
+- Improved support for long text in MessageDialog
+- Improved support for multiple lines in DayNightTextField and InputDialog
+- Updated versions
+
 ## [2.3.0] - 2025-02-22
 
 ### Changed
