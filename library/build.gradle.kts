@@ -9,8 +9,21 @@ plugins {
     alias(libs.plugins.download)
     alias(libs.plugins.detekt)
     alias(libs.plugins.dependencyAnalysis)
-    `maven-publish`
-    signing
+    alias(libs.plugins.vanniktechPublishing)
+}
+
+kotlin {
+    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toInt())
+    compilerOptions {
+        optIn.add("kotlin.time.ExperimentalTime")
+        optIn.add("androidx.compose.material3.ExperimentalMaterial3Api")
+        optIn.add("androidx.compose.material.ExperimentalMaterialApi")
+        optIn.add("androidx.compose.ui.ExperimentalComposeUiApi")
+        optIn.add("androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi")
+        freeCompilerArgs.addAll(
+            "-module-name", Pom.LIBRARY_ARTIFACT_ID,
+        )
+    }
 }
 
 android {
@@ -48,13 +61,6 @@ android {
     lint {
         abortOnError = true
         disable.addAll(listOf("InvalidPackage"))
-    }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
     }
 }
 
@@ -96,6 +102,7 @@ dependencies {
     // Test (Unit)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.engine)
+    testRuntimeOnly(libs.junit.platform.launcher)
     testImplementation(libs.mockK)
     testImplementation(libs.assertk)
 }
@@ -146,72 +153,35 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 
 // ===== Maven Deploy =====
 
-// ./gradlew clean check assembleRelease publishReleasePublicationToMavenLocal
-// ./gradlew clean check assembleRelease publishReleasePublicationToSoupbowlRepository
-// ./gradlew clean check assembleRelease publishReleasePublicationToMavenCentralRepository
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = Pom.GROUP_ID
-            artifactId = Pom.LIBRARY_ARTIFACT_ID
-            version = Pom.VERSION_NAME
+// ./gradlew clean build check publishToMavenLocal
+// ./gradlew clean build check publishToMavenCentral
+mavenPublishing {
+    val version: String by project
+    coordinates("org.dbtools", "android-commons-ui", version)
+    publishToMavenCentral()
+    signAllPublications()
 
-            afterEvaluate {
-                from(components["release"])
-            }
-
-            pom {
-                name.set(Pom.LIBRARY_NAME)
-                description.set(Pom.POM_DESCRIPTION)
-                url.set(Pom.URL)
-                licenses {
-                    license {
-                        name.set(Pom.LICENCE_NAME)
-                        url.set(Pom.LICENCE_URL)
-                        distribution.set(Pom.LICENCE_DIST)
-                    }
-                }
-                developers {
-                    developer {
-                        id.set(Pom.DEVELOPER_ID)
-                        name.set(Pom.DEVELOPER_NAME)
-                    }
-                }
-                scm {
-                    url.set(Pom.SCM_URL)
-                    connection.set(Pom.SCM_CONNECTION)
-                    developerConnection.set(Pom.SCM_DEV_CONNECTION)
-                }
+    pom {
+        name.set(Pom.LIBRARY_NAME)
+        description.set(Pom.POM_DESCRIPTION)
+        url.set(Pom.URL)
+        licenses {
+            license {
+                name.set(Pom.LICENCE_NAME)
+                url.set(Pom.LICENCE_URL)
+                distribution.set(Pom.LICENCE_DIST)
             }
         }
-    }
-    repositories {
-        maven {
-            name = "MavenCentral"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-            credentials {
-                val sonatypeNexusUsername: String? by project
-                val sonatypeNexusPassword: String? by project
-                username = sonatypeNexusUsername ?: ""
-                password = sonatypeNexusPassword ?: ""
+        developers {
+            developer {
+                id.set(Pom.DEVELOPER_ID)
+                name.set(Pom.DEVELOPER_NAME)
             }
         }
-    }
-    repositories {
-        maven {
-            name = "Soupbowl"
-            url = uri("http://192.168.0.5:8082/nexus/content/repositories/releases/")
-            credentials {
-                val soupbowlNexusUsername: String? by project
-                val soupbowlNexusPassword: String? by project
-                username = soupbowlNexusUsername ?: ""
-                password = soupbowlNexusPassword ?: ""
-            }
-            isAllowInsecureProtocol = true
+        scm {
+            url.set(Pom.SCM_URL)
+            connection.set(Pom.SCM_CONNECTION)
+            developerConnection.set(Pom.SCM_DEV_CONNECTION)
         }
     }
-}
-
-signing {
-    sign(publishing.publications["release"])
 }

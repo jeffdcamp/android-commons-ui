@@ -1,26 +1,28 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.1.20"
+agp = "8.12.2"
+kotlin = "2.2.10"
 kotlinxCoroutines = "1.10.2"
-kotlinxDateTime = "0.6.2"
+kotlinxDateTime = "0.7.1"
 
-androidxComposeMaterial3 = "1.3.1"
-androidxComposeUi = "1.7.5"
-androidxDataStore = "1.1.4"
-androidxLifecycle = "2.8.7"
-androidxNavigation = "2.8.7"
-androidxMedia3 = "1.6.0"
+androidxComposeMaterial3 = "1.3.2"
+androidxComposeUi = "1.9.0"
+androidxDataStore = "1.1.7"
+androidxLifecycle = "2.9.3"
+androidxNavigation = "2.9.3"
+androidxMedia3 = "1.8.0"
 assertk = "0.28.1"
 coil = "2.7.0"
-dependencyAnalysis = "2.15.0"
+dependencyAnalysis = "3.0.1"
 desugarJdkLibs = "2.1.5"
 detekt = "1.23.8"
 downloadPlugin = "5.6.0"
 
-junit = "5.12.1"
-kermit = "2.0.5"
+junit = "5.13.4"
+junit-platform-launcher = "1.13.4"
+kermit = "2.0.8"
 
-mockK = "1.14.0"
+mockK = "1.14.5"
+vanniktechPlugin = "0.34.0"
 versionsPlugin = "0.52.0"
 
 [plugins]
@@ -31,6 +33,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 download = { id = "de.undercouch.download", version.ref = "downloadPlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+vanniktechPublishing = { id = "com.vanniktech.maven.publish", version.ref = "vanniktechPlugin" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versionsPlugin" }
 
 [libraries]
@@ -55,6 +58,7 @@ compose-material3-windowsize = { module = "androidx.compose.material3:material3-
 
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
 
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 

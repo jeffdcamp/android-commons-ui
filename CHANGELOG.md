@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-09-01
+
+### Changed
+
+- Kotlin 2.2.10
+- Kotlin datetime 0.7.x (kotlinx.datetime.Instant to kotlin.time.Instant)
+- Updated build scripts
+- Updated versions
+
+
 ## [2.4.0] - 2025-04-10
 
 ### Changed
