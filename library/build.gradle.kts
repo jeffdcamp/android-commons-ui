@@ -20,9 +20,6 @@ kotlin {
         optIn.add("androidx.compose.material.ExperimentalMaterialApi")
         optIn.add("androidx.compose.ui.ExperimentalComposeUiApi")
         optIn.add("androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi")
-        freeCompilerArgs.addAll(
-            "-module-name", Pom.LIBRARY_ARTIFACT_ID,
-        )
     }
 }
 
@@ -45,7 +42,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs = listOf(
-            "-module-name", Pom.LIBRARY_ARTIFACT_ID,
             "-opt-in=kotlin.RequiresOptIn",
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
             "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
@@ -82,6 +78,7 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.compose.material3)
     implementation(libs.compose.material3.windowsize)
+    implementation(libs.compose.material.iconsext)
 
     // Navigation
     implementation(libs.androidx.navigation.runtime)
@@ -120,7 +117,7 @@ tasks.withType<Test> {
 tasks.register<de.undercouch.gradle.tasks.download.Download>("downloadDetektConfig") {
     download {
         onlyIf { !file("build/config/detektConfig.yml").exists() }
-        src("https://raw.githubusercontent.com/ICSEng/AndroidPublic/main/detekt/detektConfig-20231101.yml")
+        src("https://mobile-cdn.churchofjesuschrist.org/android/build/detekt/detektConfig-20231101.yml")
         dest("build/config/detektConfig.yml")
     }
 }
@@ -156,32 +153,6 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 // ./gradlew clean build check publishToMavenLocal
 // ./gradlew clean build check publishToMavenCentral
 mavenPublishing {
-    val version: String by project
-    coordinates("org.dbtools", "android-commons-ui", version)
     publishToMavenCentral()
     signAllPublications()
-
-    pom {
-        name.set(Pom.LIBRARY_NAME)
-        description.set(Pom.POM_DESCRIPTION)
-        url.set(Pom.URL)
-        licenses {
-            license {
-                name.set(Pom.LICENCE_NAME)
-                url.set(Pom.LICENCE_URL)
-                distribution.set(Pom.LICENCE_DIST)
-            }
-        }
-        developers {
-            developer {
-                id.set(Pom.DEVELOPER_ID)
-                name.set(Pom.DEVELOPER_NAME)
-            }
-        }
-        scm {
-            url.set(Pom.SCM_URL)
-            connection.set(Pom.SCM_CONNECTION)
-            developerConnection.set(Pom.SCM_DEV_CONNECTION)
-        }
-    }
 }
